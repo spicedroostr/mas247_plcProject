@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="PI_Function_Block" Id="{efb42321-a56f-439b-a67e-f0f245e3bee1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PI_Function_Block
+VAR_INPUT
+    Setpoint :INT := 18000;
+    Actual: INT:= Main.Level_Transmitter_2;
+    Kp :REAL := 0.015;
+    Ti :REAL := 40;
+    Td :REAL := 0;
+    Ts :REAL := 0.01;
+    N :REAL := 1;
+    OutMax :REAL := 100;
+    OutMin :REAL := 0;
+    bEuler :BOOL := FALSE;
+END_VAR
+
+VAR_OUTPUT
+    Output :REAL;
+    Error :REAL;
+END_VAR
+
+VAR
+    PrevError :REAL;
+    Integ :REAL;
+    Deriv :REAL;
+    dInteg :REAL;
+    Tf :REAL;
+    DerivRaw :REAL;
+    Unsat :REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Error := SetPoint - Actual;
+
+IF Ti > 0.0 THEN
+    IF bEuler THEN
+    dInteg := Ts / Ti * Error;
+ELSE
+    dInteg := Ts / Ti * (Error + PrevError) / 2;
+END_IF
+ELSE
+    dInteg := 0.0;
+    Integ := 0.0;
+END_IF
+
+IF N > 0.0 THEN
+    Tf := Td / N;
+ELSE
+    Tf := 0.0;
+END_IF
+
+DerivRaw := Td * (Error - PrevError) / Ts;
+Deriv := (Tf * Deriv + Ts * DerivRaw)
+/ (Tf + Ts);
+
+Unsat := Kp * (Error + Integ + dInteg + Deriv);
+
+IF (Unsat > OutMax AND dInteg > 0) OR
+(Unsat < OutMin AND dInteg < 0) THEN
+dInteg := 0; // anti-windup
+END_IF
+Integ := Integ + dInteg;
+
+Output := Kp * (Error + Integ + Deriv);
+IF Output > OutMax THEN Output := OutMax; END_IF
+IF Output < OutMin THEN Output := OutMin; END_IF
+
+PrevError := Error;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
