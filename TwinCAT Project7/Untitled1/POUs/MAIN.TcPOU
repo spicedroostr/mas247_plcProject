@@ -43,8 +43,8 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[PI_Controller();
-PI_Controller(Actual := Level_Transmitter_2);
-Level_Valve_2_Percentage := 100-REAL_TO_INT(PI_Controller.Output);
+PI_Controller(Actual := (INT_TO_REAL (Level_Transmitter_2) /32767)*100);
+Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
 
 // variable interval for Flow_Valve_1_Percentage  form 0 to 100  
 IF Flow_Valve_1_Percentage > 100 THEN

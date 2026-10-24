@@ -3,9 +3,10 @@
   <POU Name="PI_Function_Block" Id="{efb42321-a56f-439b-a67e-f0f245e3bee1}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PI_Function_Block
 VAR_INPUT
-    Setpoint :INT := 18000;
-    Actual: INT:= Main.Level_Transmitter_2;
-    Kp :REAL := 0.015;
+    Setpoint :REAL := 45;
+    Actual: REAL;
+	Bias: REAL := 40;
+    Kp :REAL := 20;
     Ti :REAL := 40;
     Td :REAL := 0;
     Ts :REAL := 0.01;
@@ -30,7 +31,7 @@ VAR
     Unsat :REAL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[Error := SetPoint - Actual;
+      <ST><![CDATA[Error := Actual - Setpoint;
 
 IF Ti > 0.0 THEN
     IF bEuler THEN
@@ -53,7 +54,7 @@ DerivRaw := Td * (Error - PrevError) / Ts;
 Deriv := (Tf * Deriv + Ts * DerivRaw)
 / (Tf + Ts);
 
-Unsat := Kp * (Error + Integ + dInteg + Deriv);
+Unsat := Kp * (Error + Integ + dInteg + Deriv) + Bias;
 
 IF (Unsat > OutMax AND dInteg > 0) OR
 (Unsat < OutMin AND dInteg < 0) THEN
@@ -61,7 +62,7 @@ dInteg := 0; // anti-windup
 END_IF
 Integ := Integ + dInteg;
 
-Output := Kp * (Error + Integ + Deriv);
+Output := Kp * (Error + Integ + Deriv) + Bias;
 IF Output > OutMax THEN Output := OutMax; END_IF
 IF Output < OutMin THEN Output := OutMin; END_IF
 
