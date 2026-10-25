@@ -15,12 +15,16 @@
     <Implicit_KindOfTask>{f061334f-8da9-4881-a81a-67113e1408f2}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{4ff7d868-6a39-4392-b179-ea0f6a96236c}</Implicit_Jitter_Distribution>
     <LibraryReferences>{4ba0846d-3cbb-4e43-8d4e-a88fb326c03e}</LibraryReferences>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB_Safety.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
