@@ -62,6 +62,16 @@
             "REQUIRED": true,
             "STARTUPTYPE": 0
         },
+        "TcHmiSqliteHistorize": {
+            "ENABLED": true,
+            "METADATA": {
+                "migrationVersion": "1.14"
+            },
+            "NAME": "TcHmiSqliteHistorize",
+            "PATH": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.SqliteHistorize.25.0.122\\runtimes\\win-x64\\native\\",
+            "REQUIRED": false,
+            "STARTUPTYPE": 1
+        },
         "TcHmiSqliteLogger": {
             "ENABLED": true,
             "METADATA": {
@@ -831,6 +841,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Level_Transmitter_1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Level_Transmitter_1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.Level_Transmitter_1_Scaled": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -900,6 +920,16 @@
             "DOMAIN": "ADS",
             "DYNAMIC": true,
             "MAPPING": "PLC1::MAIN::Motor_ON",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Motor_ON_OFF": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Motor_ON_OFF",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/BOOL"
             },
@@ -3375,6 +3405,374 @@
             "SCHEMA": {},
             "USEMAPPING": true
         },
+        "TcHmiSqliteHistorize.Config": {
+            "ACCESS": 0,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "Config",
+            "OPTIONS": {},
+            "SCHEMA": {},
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.DeleteDatabaseEntries": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "DeleteDatabaseEntries",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "writeValue": {
+                    "properties": {
+                        "disableRecording": {
+                            "description": "Disables the recording of one or all historize symbols depending if 'symbolName' is set.",
+                            "type": "boolean"
+                        },
+                        "symbolName": {
+                            "description": "Delete database entries of symbol. If 'symbolName' is not set, all entries in the database will be deleted.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.Diagnostics": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "Diagnostics",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "additionalProperties": false,
+                "function": true,
+                "properties": {
+                    "databaseSize": {
+                        "propertyOrder": 1,
+                        "type": "number",
+                        "unit": "byte"
+                    },
+                    "estimatedDatabaseSize": {
+                        "propertyOrder": 5,
+                        "type": "number",
+                        "unit": "byte"
+                    },
+                    "estimatedDatabaseSizePerSymbol": {
+                        "additionalProperties": {
+                            "type": "number",
+                            "unit": "byte"
+                        },
+                        "type": "object"
+                    },
+                    "numEntries": {
+                        "configDescription": "descNumEntries",
+                        "propertyOrder": 2,
+                        "type": "integer"
+                    },
+                    "numEntriesLifetime": {
+                        "configDescription": "descNumEntries",
+                        "propertyOrder": 3,
+                        "type": "number"
+                    },
+                    "recordingTime": {
+                        "format": "timespan",
+                        "propertyOrder": 4,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.GetTrendLineData": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "GetTrendLineData",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "anyOf": [
+                    {
+                        "function": true,
+                        "properties": {
+                            "axesData": {
+                                "description": "Array with sub-array for each symbol.",
+                                "items": {
+                                    "items": {
+                                        "properties": {
+                                            "error": {
+                                                "description": "Error code associated with the data point.",
+                                                "type": "number"
+                                            },
+                                            "flags": {
+                                                "description": "Recording state flags indicating when data recording started or stopped.",
+                                                "type": "string"
+                                            },
+                                            "x": {
+                                                "description": "Recording time of data point.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            },
+                                            "y": {
+                                                "description": "Historized value.",
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object",
+                        "versions": [
+                            1.0
+                        ],
+                        "writeValue": {
+                            "properties": {
+                                "chartName": {
+                                    "description": "TrendLineChart name.",
+                                    "type": "string"
+                                },
+                                "displayWidth": {
+                                    "description": "Display width of the TrendLineChart in pixels.",
+                                    "maximum": 10240.0,
+                                    "minimum": 2.0,
+                                    "type": "number"
+                                },
+                                "xAxisEnd": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "xAxisStart": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "yAxes": {
+                                    "items": {
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "symbol": {
+                                                "description": "Symbol name.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "symbol"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "type": "array",
+                                    "uniqueItems": true
+                                }
+                            },
+                            "required": [
+                                "chartName",
+                                "yAxes",
+                                "xAxisStart",
+                                "displayWidth"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "function": true,
+                        "properties": {
+                            "analyticsData": {
+                                "description": "Array with analytics data for each symbol.",
+                                "items": {
+                                    "properties": {
+                                        "average": {
+                                            "description": "The average value of all data points in the requested time range.",
+                                            "type": "number"
+                                        },
+                                        "maximum": {
+                                            "description": "The maximum value of all data points in the requested time range.",
+                                            "type": "number"
+                                        },
+                                        "minimum": {
+                                            "description": "The minimum value of all data points in the requested time range.",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "axesData": {
+                                "description": "Array with sub-array for each symbol.",
+                                "items": {
+                                    "items": {
+                                        "properties": {
+                                            "error": {
+                                                "description": "Error code associated with the data point.",
+                                                "type": "number"
+                                            },
+                                            "flags": {
+                                                "description": "Recording state flags indicating when data recording started or stopped.",
+                                                "type": "string"
+                                            },
+                                            "x": {
+                                                "description": "Recording time of data point.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            },
+                                            "y": {
+                                                "description": "Historized value.",
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object",
+                        "versions": [
+                            2.0
+                        ],
+                        "writeValue": {
+                            "properties": {
+                                "analyticsType": {
+                                    "description": "Specifies which analytics calculations to perform on the retrieved data.",
+                                    "items": {
+                                        "enum": [
+                                            "minimum",
+                                            "maximum",
+                                            "average"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "chartName": {
+                                    "description": "TrendLineChart name.",
+                                    "type": "string"
+                                },
+                                "displayWidth": {
+                                    "description": "Display width of the TrendLineChart in pixels.",
+                                    "maximum": 10240.0,
+                                    "minimum": 2.0,
+                                    "type": "number"
+                                },
+                                "xAxisEnd": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "xAxisStart": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "yAxes": {
+                                    "items": {
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "symbol": {
+                                                "description": "Symbol name.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "symbol"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "type": "array",
+                                    "uniqueItems": true
+                                }
+                            },
+                            "required": [
+                                "chartName",
+                                "yAxes",
+                                "xAxisStart",
+                                "displayWidth"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.GetTrendLineWindow": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "GetTrendLineWindow",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "properties": {
+                    "xAxisEnd": {
+                        "description": "Timestamp from recording.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "xAxisStart": {
+                        "description": "Timestamp from recording.",
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "writeValue": {
+                    "properties": {
+                        "chartName": {
+                            "description": "TrendLineChart name.",
+                            "type": "string"
+                        },
+                        "xAxisEnd": {
+                            "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                        },
+                        "xAxisStart": {
+                            "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                        },
+                        "yAxes": {
+                            "description": "Start and end time for TrendLineChart.",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "symbol": {
+                                        "description": "Symbol name.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "symbol"
+                                ],
+                                "type": "object"
+                            },
+                            "type": "array",
+                            "uniqueItems": true
+                        }
+                    },
+                    "required": [
+                        "chartName",
+                        "yAxes",
+                        "xAxisStart"
+                    ],
+                    "type": "object"
+                }
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.HistorizeData": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "HistorizeData",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true
+            },
+            "USEMAPPING": true
+        },
         "TcHmiSqliteLogger.Clear": {
             "ACCESS": 3,
             "DOMAIN": "TcHmiSqliteLogger",
@@ -4078,7 +4476,9 @@
             "FILEACCESS": 3,
             "FILES": {},
             "SYMBOLACCESS": 3,
-            "SYMBOLS": {}
+            "SYMBOLS": {
+                "TcHmiSqliteHistorize.DeleteDatabaseEntries": 3
+            }
         },
         "__SystemGuests": {
             "ENABLED": true,
@@ -4126,12 +4526,14 @@
                 "ADS.PLC1.MAIN.BControllerActive": 3,
                 "ADS.PLC1.MAIN.EMERGENCY_STOP": 3,
                 "ADS.PLC1.MAIN.Flow_Valve_1_Percentage": 3,
+                "ADS.PLC1.MAIN.Level_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Level_Transmitter_1_Scaled": 3,
                 "ADS.PLC1.MAIN.Level_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Level_Valve_1_Percentage": 3,
                 "ADS.PLC1.MAIN.Level_Valve_2_Percentage": 3,
                 "ADS.PLC1.MAIN.Level_Valve_3_Percentage": 3,
                 "ADS.PLC1.MAIN.Motor_ON": 3,
+                "ADS.PLC1.MAIN.Motor_ON_OFF": 3,
                 "ADS.PLC1.MAIN.Motor_speed_Percentage": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Bias": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Kp": 3,
@@ -4169,6 +4571,10 @@
                 "Logout": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
+                "TcHmiSqliteHistorize.Diagnostics": 3,
+                "TcHmiSqliteHistorize.GetTrendLineData": 3,
+                "TcHmiSqliteHistorize.GetTrendLineWindow": 3,
+                "TcHmiSqliteHistorize.HistorizeData": 3,
                 "TcHmiSqliteLogger.Diagnostics": 3,
                 "TcHmiUserManagement.ChangePassword": 3,
                 "TcHmiUserManagement.Disable2FA": 3,
