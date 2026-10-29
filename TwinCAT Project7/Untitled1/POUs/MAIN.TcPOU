@@ -42,14 +42,22 @@ VAR
 	//PI function block instantiation
 	PI_Controller : PI_Function_Block;
 	
+	//PI controller on/off state
+	bStartButton : BOOL;
+	bStopButton : BOOL;
+	BControllerActive : BOOL;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[PI_Controller();
+      <ST><![CDATA[
+PI_Controller();
+PI_Controller(bEnable := bControllerActive);
 Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
 Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
 PI_Controller(Actual := Level_Transmitter_2_scaled);
 Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
+
 
 // variable interval for Flow_Valve_1_Percentage  form 0 to 100  
 IF Flow_Valve_1_Percentage > 100 THEN
