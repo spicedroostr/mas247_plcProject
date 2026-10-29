@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <DUT Name="ST_Valve" Id="{8c8b9c2a-24c4-411a-869a-043270d69185}">
+    <Declaration><![CDATA[// HMI interface for one valve. Commands are written by the HMI, status by FB_Valve.
+TYPE ST_Valve :
+STRUCT
+	// Commands
+	eMode     : E_ControlMode := E_ControlMode.eManual;
+	rManualSP : REAL;		// % open, used in manual. Follows the position in auto (bumpless).
+	// Status
+	rPosition : REAL;		// % open actually sent to the valve
+	bClamped  : BOOL;		// Requested value was outside 0-100 %
+	bForced   : BOOL;		// Held in a safe position, commands ignored
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

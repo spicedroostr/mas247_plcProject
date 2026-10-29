@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="F_RawToPercent" Id="{e455eef3-4be4-4346-8dab-5d7416680284}" SpecialFunc="None">
+    <Declaration><![CDATA[// EL3024 4-20 mA (0-32767) to 0-100 %. Placeholder until FB_AnalogInput (C1) scales to engineering units.
+FUNCTION F_RawToPercent : REAL
+VAR_INPUT
+	iRaw : INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_RawToPercent := INT_TO_REAL(iRaw) / 32767.0 * 100.0;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

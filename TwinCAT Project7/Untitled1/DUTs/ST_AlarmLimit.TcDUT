@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <DUT Name="ST_AlarmLimit" Id="{4e27fe62-8204-4af5-9e72-425f7c504295}">
+    <Declaration><![CDATA[// Settings and state for one limit alarm (used by the alarm FB in section E).
+TYPE ST_AlarmLimit :
+STRUCT
+	rLimit        : REAL;
+	rHysteresis   : REAL;
+	tDelay        : TIME := T#2S;
+	bHighAlarm    : BOOL := TRUE;	// TRUE: alarm above rLimit, FALSE: alarm below
+	bActive       : BOOL;
+	bAcknowledged : BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

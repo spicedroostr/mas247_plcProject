@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="FB_Motor" Id="{89acdad6-9271-4af5-972d-c84c546143eb}" SpecialFunc="None">
+    <Declaration><![CDATA[// Pump motor: on/off, direction and speed on the EL1859/EL4004.
+// Speed is capped so the motor never exceeds rMaxRpm (step 1 requires < 1000 RPM).
+FUNCTION_BLOCK FB_Motor
+VAR_IN_OUT
+	stHmi : ST_Motor;	// Commands from and status to the HMI
+END_VAR
+VAR_INPUT
+	bAutoOn        : BOOL;	// From the sequence
+	bAutoReverse   : BOOL;
+	rAutoSpeed     : REAL;	// %
+	bInterlock     : BOOL;	// TRUE holds the motor off (emergency stop)
+	rMaxRpm        : REAL := 1000.0;
+	rRpmPerPercent : REAL := 27.8;	// User manual: 830-975 RPM at 30-35 %. Check on the drive display.
+	rRawMin        : REAL := 6553.0;	// Output at 0 % (2 V)
+	rRawMax        : REAL := 32767.0;	// Output at 100 % (10 V)
+END_VAR
+VAR_OUTPUT
+	bOn       : BOOL;	// To Motor ON/OFF
+	bReverse  : BOOL;	// To Motor Direction
+	iRawSpeed : INT;	// To Motor Speed
+END_VAR
+VAR
+	bOnRequest      : BOOL;
+	bReverseRequest : BOOL;
+	rSpeedRequest   : REAL;
+	rMaxSpeed       : REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF stHmi.eMode = E_ControlMode.eAuto THEN
+	bOnRequest := bAutoOn;
+	bReverseRequest := bAutoReverse;
+	rSpeedRequest := rAutoSpeed;
+	// Manual commands follow auto, so switching to manual doesn't change anything
+	stHmi.bManualOn := bAutoOn;
+	stHmi.bManualReverse := bAutoReverse;
+	stHmi.rManualSpeed := rAutoSpeed;
+ELSE
+	bOnRequest := stHmi.bManualOn;
+	bReverseRequest := stHmi.bManualReverse;
+	rSpeedRequest := stHmi.rManualSpeed;
+END_IF
+
+// Direction may only change while the motor is stopped
+IF NOT bOn THEN
+	bReverse := bReverseRequest;
+END_IF
+
+bOn := bOnRequest AND NOT bInterlock;
+
+// Speed limit from the RPM cap
+IF rRpmPerPercent > 0.0 THEN
+	rMaxSpeed := LIMIT(0.0, rMaxRpm / rRpmPerPercent, 100.0);
+ELSE
+	rMaxSpeed := 100.0;
+END_IF
+
+stHmi.rSpeed := LIMIT(0.0, rSpeedRequest, rMaxSpeed);
+stHmi.bLimited := rSpeedRequest > rMaxSpeed;
+
+IF bOn THEN
+	iRawSpeed := REAL_TO_INT(rRawMin + (rRawMax - rRawMin) * stHmi.rSpeed / 100.0);
+	stHmi.rRpm := stHmi.rSpeed * rRpmPerPercent;
+ELSE
+	iRawSpeed := REAL_TO_INT(rRawMin);
+	stHmi.rRpm := 0.0;
+END_IF
+
+stHmi.bRunning := bOn;
+stHmi.bReverse := bReverse;
+stHmi.bInterlocked := bInterlock AND bOnRequest;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <GVL Name="GVL_HMI" Id="{6a348238-ba55-4c84-b33e-86a668e25380}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+// Every tag the engineering HMI and the operator HMI bind to.
+// Both HMIs use these, so they always show the same values.
+VAR_GLOBAL
+	// Soft buttons (pulse from the HMI, handled by the sequence)
+	bStart : BOOL;
+	bStop  : BOOL;
+	bReset : BOOL;
+
+	// Sequence
+	eState : E_SeparatorState := E_SeparatorState.eIdle;
+
+	// Valves. FV1 and LV1 start fully open so the riser can't build pressure (user manual 2.3).
+	stFV1        : ST_Valve := (eMode := E_ControlMode.eManual, rManualSP := 100.0);
+	stLV1        : ST_Valve := (eMode := E_ControlMode.eManual, rManualSP := 100.0);
+	stLV2        : ST_Valve := (eMode := E_ControlMode.eAuto);
+	stLV3        : ST_Valve;
+	stAirValve   : ST_Valve;
+	stMixerValve : ST_Valve;
+
+	// Pump motor
+	stMotor : ST_Motor;
+
+	// LT2 -> LV2 level controller
+	stLevelControl : ST_LevelControl;
+
+	// Measurements
+	stLT1  : ST_AnalogSignal;
+	stLT2  : ST_AnalogSignal;
+	stPT1  : ST_AnalogSignal;
+	stPT2  : ST_AnalogSignal;
+	stPT3  : ST_AnalogSignal;
+	stPDT1 : ST_AnalogSignal;
+	stPDT2 : ST_AnalogSignal;
+	stTT1  : ST_AnalogSignal;
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

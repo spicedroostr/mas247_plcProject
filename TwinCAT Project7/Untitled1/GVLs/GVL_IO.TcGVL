@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <GVL Name="GVL_IO" Id="{07824173-42db-42f7-bde6-866c79db4f38}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+// Hardware I/O, linked to the EtherCAT terminals in the System Manager.
+// Only MAIN reads and writes these.
+VAR_GLOBAL
+	// EL4004 analogue outputs, 0-32767
+	Flow_Valve_1 AT %Q* : INT;
+	Level_Valve_1 AT %Q* : INT;
+	Level_Valve_2 AT %Q* : INT;
+	Level_Valve_3 AT %Q* : INT;
+	Gas_Valve AT %Q* : INT;
+	Mixer_Valve AT %Q* : INT;
+	Motor_speed AT %Q* : INT;
+
+	// EL1859 digital outputs
+	Motor_ON_OFF AT %Q* : BOOL;
+	Motor_Direction AT %Q* : BOOL;
+
+	// EL1859 digital inputs. Emergency and Stop are NC (FALSE = pressed), Start is NO.
+	Start_Button AT %I* : BOOL;
+	Stop_Button AT %I* : BOOL;
+	EMERGENCY_STOP AT %I* : BOOL;
+
+	// EL3024 analogue inputs, 4-20 mA as 0-32767
+	Level_Transmitter_1 AT %I* : INT;
+	Level_Transmitter_2 AT %I* : INT;
+	Temperature_Transmitter AT %I* : INT;
+	Pressure_Differencial_Transmitter_1 AT %I* : INT;
+	Pressure_Differencial_Transmitter_2 AT %I* : INT;
+	Pressure_Transmitter_1 AT %I* : INT;
+	Pressure_Transmitter_2 AT %I* : INT;
+	Pressure_Transmitter_3 AT %I* : INT;
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

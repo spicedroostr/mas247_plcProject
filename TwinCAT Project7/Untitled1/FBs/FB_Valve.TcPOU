@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="FB_Valve" Id="{fb8a8c89-3e6a-42e1-a922-1b1365fd34d6}" SpecialFunc="None">
+    <Declaration><![CDATA[// One control valve on an EL4004 channel.
+// Picks the manual, auto or forced setpoint, clamps it to 0-100 % and scales it to the output.
+FUNCTION_BLOCK FB_Valve
+VAR_IN_OUT
+	stHmi : ST_Valve;	// Commands from and status to the HMI
+END_VAR
+VAR_INPUT
+	rAutoSP  : REAL;	// % from the PI controller or the sequence
+	bForce   : BOOL;	// Safe state: overrides manual and auto
+	rForceSP : REAL;	// % used while bForce is TRUE
+	rRawMin  : REAL := 6553.0;	// Output at 0 % (2 V)
+	rRawMax  : REAL := 32767.0;	// Output at 100 % (10 V)
+END_VAR
+VAR_OUTPUT
+	iRawOut : INT;	// To the EL4004 channel
+END_VAR
+VAR
+	rRequest : REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bForce THEN
+	rRequest := rForceSP;
+ELSIF stHmi.eMode = E_ControlMode.eManual THEN
+	rRequest := stHmi.rManualSP;
+ELSE
+	rRequest := rAutoSP;
+END_IF
+
+stHmi.rPosition := LIMIT(0.0, rRequest, 100.0);
+stHmi.bClamped := stHmi.rPosition <> rRequest;
+stHmi.bForced := bForce;
+
+// Manual setpoint follows the valve while in auto, so switching to manual doesn't make it jump
+IF stHmi.eMode = E_ControlMode.eAuto OR bForce THEN
+	stHmi.rManualSP := stHmi.rPosition;
+END_IF
+
+iRawOut := REAL_TO_INT(rRawMin + (rRawMax - rRawMin) * stHmi.rPosition / 100.0);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

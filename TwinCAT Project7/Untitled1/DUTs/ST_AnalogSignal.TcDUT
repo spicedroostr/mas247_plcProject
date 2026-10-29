@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <DUT Name="ST_AnalogSignal" Id="{35a2212e-915d-49bd-a44f-77efdf98d9b4}">
+    <Declaration><![CDATA[// One analogue measurement, raw value from the EL3024 plus the scaled value.
+TYPE ST_AnalogSignal :
+STRUCT
+	iRaw      : INT;			// 4-20 mA as 0-32767
+	rValue    : REAL;			// Scaled value in sUnit
+	rRangeMin : REAL := 0.0;	// Value at 4 mA
+	rRangeMax : REAL := 100.0;	// Value at 20 mA
+	sUnit     : STRING(10) := '%';
+	bFault    : BOOL;			// Wire break / out of range (set by FB_AnalogInput)
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

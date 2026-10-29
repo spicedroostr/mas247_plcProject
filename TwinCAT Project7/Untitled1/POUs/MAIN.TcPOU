@@ -3,155 +3,79 @@
   <POU Name="MAIN" Id="{75317203-8f43-4932-aa88-c7b05e9ca563}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	//Linking variables to IO cards
-	Flow_Valve_1 AT %Q* : INT;
-	Level_Valve_1 AT %Q* : INT;
-	Level_Valve_2 AT %Q* : INT;
-	Level_Valve_3 AT %Q* : INT;
-	Gas_Valve AT %Q* : INT;
-	Mixer_Valve AT %Q* : INT;
-	Motor_speed AT %Q* : INT;
-	Motor_ON_OFF AT %Q* :BOOL;
-	Motor_Direction AT %Q* :BOOL; 
-	Start_Button AT %I* :BOOL;
-	Stop_Button AT %I* : BOOL; 
-	EMERGENCY_STOP AT %I* : BOOL; 
-	Level_Transmitter_1 AT %I* :INT; 
-	Level_Transmitter_2 AT %I* :INT; 
-	Temperature_Transmitter AT %I* :INT;  
-	Pressure_Differencial_Transmitter_1 AT %I* : INT;
-	Pressure_Differencial_Transmitter_2 AT %I* : INT;
-	Pressure_Transmitter_1 AT %I* : INT ; 
-	Pressure_Transmitter_2 AT %I* : INT ; 
-	Pressure_Transmitter_3 AT %I* : INT ; 
+	// Valves
+	fbFV1        : FB_Valve;
+	fbLV1        : FB_Valve;
+	fbLV2        : FB_Valve;
+	fbLV3        : FB_Valve;
+	fbAirValve   : FB_Valve;
+	fbMixerValve : FB_Valve;
 
-	
-	//User Input as percentage
-	Flow_Valve_1_Percentage: INT :=100;
-	Level_Valve_1_Percentage: INT  := 0;
-	Level_Valve_2_Percentage: INT := 0;
-	Level_Valve_3_Percentage: INT := 0;
-	Motor_speed_Percentage: INT := 0;
-	Motor_ON : BOOL ;
-	ON_OFF : STRING(10) := 'OFF' ; 
-	
-	//Scaled values
-	Level_Transmitter_1_Scaled : REAL;
-	Level_Transmitter_2_Scaled : REAL;
-	
-	//PI function block instantiation
-	PI_Controller : PI_Function_Block;
-	
-	//PI controller on/off state
-	bControllerActive : BOOL;
-	
-END_VAR
-]]></Declaration>
+	// Pump motor
+	fbMotor : FB_Motor;
+
+	// LT2 -> LV2 level controller
+	fbLevelPI : PI_Function_Block;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[// MAIN only reads inputs, calls the objects and writes outputs.
+// HMI tags are in GVL_HMI, hardware I/O in GVL_IO.
 
-PI_Controller(bEnable := bControllerActive);
-Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
-Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
-PI_Controller(Actual := Level_Transmitter_2_scaled,
-bEnable := bControllerActive);
-Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
+// ---------------------------------------------------------------- Inputs
+GVL_HMI.stLT1.iRaw  := GVL_IO.Level_Transmitter_1;
+GVL_HMI.stLT2.iRaw  := GVL_IO.Level_Transmitter_2;
+GVL_HMI.stPT1.iRaw  := GVL_IO.Pressure_Transmitter_1;
+GVL_HMI.stPT2.iRaw  := GVL_IO.Pressure_Transmitter_2;
+GVL_HMI.stPT3.iRaw  := GVL_IO.Pressure_Transmitter_3;
+GVL_HMI.stPDT1.iRaw := GVL_IO.Pressure_Differencial_Transmitter_1;
+GVL_HMI.stPDT2.iRaw := GVL_IO.Pressure_Differencial_Transmitter_2;
+GVL_HMI.stTT1.iRaw  := GVL_IO.Temperature_Transmitter;
 
+GVL_HMI.stLT1.rValue  := F_RawToPercent(GVL_HMI.stLT1.iRaw);
+GVL_HMI.stLT2.rValue  := F_RawToPercent(GVL_HMI.stLT2.iRaw);
+GVL_HMI.stPT1.rValue  := F_RawToPercent(GVL_HMI.stPT1.iRaw);
+GVL_HMI.stPT2.rValue  := F_RawToPercent(GVL_HMI.stPT2.iRaw);
+GVL_HMI.stPT3.rValue  := F_RawToPercent(GVL_HMI.stPT3.iRaw);
+GVL_HMI.stPDT1.rValue := F_RawToPercent(GVL_HMI.stPDT1.iRaw);
+GVL_HMI.stPDT2.rValue := F_RawToPercent(GVL_HMI.stPDT2.iRaw);
+GVL_HMI.stTT1.rValue  := F_RawToPercent(GVL_HMI.stTT1.iRaw);
 
-// variable interval for Flow_Valve_1_Percentage  form 0 to 100  
-IF Flow_Valve_1_Percentage > 100 THEN
-	Flow_Valve_1_Percentage := 100; 
-	ELSE IF Flow_Valve_1_Percentage < 0 THEN 
-		Flow_Valve_1_Percentage := 0; 
-	END_IF
-	
-END_IF
+// ---------------------------------------------------------------- Level control
+fbLevelPI(
+	Setpoint := GVL_HMI.stLevelControl.rSetpoint,
+	Actual   := GVL_HMI.stLT2.rValue,
+	Kp       := GVL_HMI.stLevelControl.rKp,
+	Ti       := GVL_HMI.stLevelControl.rTi,
+	Bias     := GVL_HMI.stLevelControl.rBias,
+	bEnable  := GVL_HMI.stLevelControl.bEnable);
 
-// variable interval for Level_Valve_1_Percentage  form 0 to 100  
-IF Level_Valve_1_Percentage > 100 THEN
-	Level_Valve_1_Percentage := 100; 
-	ELSE IF Level_Valve_1_Percentage < 0 THEN 
-		Level_Valve_1_Percentage := 0; 
-	END_IF
-	
-END_IF
+GVL_HMI.stLevelControl.rActual := GVL_HMI.stLT2.rValue;
+GVL_HMI.stLevelControl.rError  := fbLevelPI.Error;
+GVL_HMI.stLevelControl.rOutput := fbLevelPI.Output;
 
-// variable interval for Level_Valve_2_Percentage  form 0 to 100 
-IF Level_Valve_2_Percentage > 100 THEN
-	Level_Valve_2_Percentage := 100; 
-	ELSE IF Level_Valve_2_Percentage < 0 THEN 
-		Level_Valve_2_Percentage := 0; 
-	END_IF
-	
-END_IF
+// ---------------------------------------------------------------- Valves
+// Auto setpoints other than LV2 come from the sequence FB (section D)
+fbFV1(stHmi := GVL_HMI.stFV1, rAutoSP := 100.0);
+fbLV1(stHmi := GVL_HMI.stLV1, rAutoSP := 100.0);
+fbLV2(stHmi := GVL_HMI.stLV2, rAutoSP := fbLevelPI.Output);
+fbLV3(stHmi := GVL_HMI.stLV3, rAutoSP := 0.0);
+fbAirValve(stHmi := GVL_HMI.stAirValve, rAutoSP := 0.0);
+fbMixerValve(stHmi := GVL_HMI.stMixerValve, rAutoSP := 0.0);
 
-// variable interval for Level_Valve_3_Percentage  form 0 to 100 
-IF Level_Valve_3_Percentage > 100 THEN
-	Level_Valve_3_Percentage := 100; 
-	ELSE IF Level_Valve_3_Percentage < 0 THEN 
-		Level_Valve_3_Percentage := 0; 
-	END_IF
-	
-END_IF
+// ---------------------------------------------------------------- Motor
+// Emergency stop is NC: FALSE means pressed
+fbMotor(stHmi := GVL_HMI.stMotor, bInterlock := NOT GVL_IO.EMERGENCY_STOP);
 
-
-
-// variable interval for Motor_speed_Percentage  form 0 to 100 
-IF Motor_speed_Percentage > 100 THEN
-	Motor_speed_Percentage := 100; 
-	ELSE IF Motor_speed_Percentage < 0 THEN 
-		Motor_speed_Percentage := 0; 
-	END_IF
-	
-END_IF
-
-// Flow_Valve_1 calibration
-Flow_Valve_1 := REAL_TO_INT (262.14*Flow_Valve_1_Percentage +6553 ); 
-
-// Level_Valve_1 calibration
-Level_Valve_1 := REAL_TO_INT(262.14*Level_Valve_1_Percentage +6553);
-
-// Level_Valve_2 calibration
-Level_Valve_2 := REAL_TO_INT(262.14*Level_Valve_2_Percentage +6553);
-
-// Level_Valve_3 calibration
-Level_Valve_3 := REAL_TO_INT(262.14*Level_Valve_3_Percentage +6553);
-
-
-// Motor_speed calibration
-Motor_speed := REAL_TO_INT(262.14*Motor_speed_Percentage +6553);
-
- 
-IF Motor_ON_OFF   THEN
-    Motor_ON   :=  FALSE;
-	ON_OFF  := 'MOTOR: ON' ;
-	
-ELSE
-    Motor_ON  := TRUE;
-	ON_OFF  := 'MOTOR: OFF' ;
-END_IF
-
-
-
-
-
-
-
-
-
-
- 
-
-	
-
-
-
-
-
-
-
-
-]]></ST>
+// ---------------------------------------------------------------- Outputs
+GVL_IO.Flow_Valve_1    := fbFV1.iRawOut;
+GVL_IO.Level_Valve_1   := fbLV1.iRawOut;
+GVL_IO.Level_Valve_2   := fbLV2.iRawOut;
+GVL_IO.Level_Valve_3   := fbLV3.iRawOut;
+GVL_IO.Gas_Valve       := fbAirValve.iRawOut;
+GVL_IO.Mixer_Valve     := fbMixerValve.iRawOut;
+GVL_IO.Motor_ON_OFF    := fbMotor.bOn;
+GVL_IO.Motor_Direction := fbMotor.bReverse;
+GVL_IO.Motor_speed     := fbMotor.iRawSpeed;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

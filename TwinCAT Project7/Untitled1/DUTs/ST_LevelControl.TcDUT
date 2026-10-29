@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <DUT Name="ST_LevelControl" Id="{ecd956fb-eaaf-4f26-80fb-b1cc936e5347}">
+    <Declaration><![CDATA[// HMI interface for the LT2 -> LV2 PI level controller. Defaults are the hardware tuning.
+TYPE ST_LevelControl :
+STRUCT
+	// Commands / tuning
+	bEnable   : BOOL;
+	rSetpoint : REAL := 45.0;	// % of LT2
+	rKp       : REAL := 20.0;
+	rTi       : REAL := 40.0;	// s
+	rBias     : REAL := 40.0;	// % LV2 at zero error
+	// Status
+	rActual   : REAL;		// LT2 %
+	rError    : REAL;
+	rOutput   : REAL;		// LV2 % requested
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

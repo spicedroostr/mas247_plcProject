@@ -65,87 +65,87 @@
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>MAIN.Flow_Valve_1</Name>
+							<Name>GVL_IO.Flow_Valve_1</Name>
 							<Comment><![CDATA[Linking variables to IO cards]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Level_Valve_1</Name>
+							<Name>GVL_IO.Level_Valve_1</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Level_Valve_2</Name>
+							<Name>GVL_IO.Level_Valve_2</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Level_Valve_3</Name>
+							<Name>GVL_IO.Level_Valve_3</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Gas_Valve</Name>
+							<Name>GVL_IO.Gas_Valve</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Mixer_Valve</Name>
+							<Name>GVL_IO.Mixer_Valve</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Motor_speed</Name>
+							<Name>GVL_IO.Motor_speed</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Motor_ON_OFF</Name>
+							<Name>GVL_IO.Motor_ON_OFF</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Motor_Direction</Name>
+							<Name>GVL_IO.Motor_Direction</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>MAIN.Start_Button</Name>
+							<Name>GVL_IO.Start_Button</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Stop_Button</Name>
+							<Name>GVL_IO.Stop_Button</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.EMERGENCY_STOP</Name>
+							<Name>GVL_IO.EMERGENCY_STOP</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Level_Transmitter_1</Name>
+							<Name>GVL_IO.Level_Transmitter_1</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Level_Transmitter_2</Name>
+							<Name>GVL_IO.Level_Transmitter_2</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Temperature_Transmitter</Name>
+							<Name>GVL_IO.Temperature_Transmitter</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Pressure_Differencial_Transmitter_1</Name>
+							<Name>GVL_IO.Pressure_Differencial_Transmitter_1</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Pressure_Differencial_Transmitter_2</Name>
+							<Name>GVL_IO.Pressure_Differencial_Transmitter_2</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Pressure_Transmitter_1</Name>
+							<Name>GVL_IO.Pressure_Transmitter_1</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Pressure_Transmitter_2</Name>
+							<Name>GVL_IO.Pressure_Transmitter_2</Name>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.Pressure_Transmitter_3</Name>
+							<Name>GVL_IO.Pressure_Transmitter_3</Name>
 							<Type>INT</Type>
 						</Var>
 					</Vars>
@@ -815,34 +815,34 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^Untitled1^Untitled1 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 12 (EL1859)">
-				<Link VarA="PlcTask Inputs^MAIN.EMERGENCY_STOP" VarB="Channel 1^EMERGENCY STOP"/>
-				<Link VarA="PlcTask Inputs^MAIN.Start_Button" VarB="Channel 2^Start Button"/>
-				<Link VarA="PlcTask Inputs^MAIN.Stop_Button" VarB="Channel 3^Stop Button"/>
-				<Link VarA="PlcTask Outputs^MAIN.Motor_Direction" VarB="Channel 10^Motor Direction"/>
-				<Link VarA="PlcTask Outputs^MAIN.Motor_ON_OFF" VarB="Channel 9^Motor ON/OFF"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.EMERGENCY_STOP" VarB="Channel 1^EMERGENCY STOP"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Start_Button" VarB="Channel 2^Start Button"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Stop_Button" VarB="Channel 3^Stop Button"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Motor_Direction" VarB="Channel 10^Motor Direction"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Motor_ON_OFF" VarB="Channel 9^Motor ON/OFF"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 2 (EL4004)">
-				<Link VarA="PlcTask Outputs^MAIN.Flow_Valve_1" VarB="AO Outputs Channel 4^Flow_Valve_1"/>
-				<Link VarA="PlcTask Outputs^MAIN.Level_Valve_1" VarB="AO Outputs Channel 1^Level_Valve_1"/>
-				<Link VarA="PlcTask Outputs^MAIN.Level_Valve_2" VarB="AO Outputs Channel 2^Level_Valve_2"/>
-				<Link VarA="PlcTask Outputs^MAIN.Level_Valve_3" VarB="AO Outputs Channel 3^Level_Valve_3"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Flow_Valve_1" VarB="AO Outputs Channel 4^Flow_Valve_1"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Level_Valve_1" VarB="AO Outputs Channel 1^Level_Valve_1"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Level_Valve_2" VarB="AO Outputs Channel 2^Level_Valve_2"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Level_Valve_3" VarB="AO Outputs Channel 3^Level_Valve_3"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 3 (EL4004)">
-				<Link VarA="PlcTask Outputs^MAIN.Gas_Valve" VarB="AO Outputs Channel 1^Gas_Valve"/>
-				<Link VarA="PlcTask Outputs^MAIN.Mixer_Valve" VarB="AO Outputs Channel 2^Mixer_Valve "/>
-				<Link VarA="PlcTask Outputs^MAIN.Motor_speed" VarB="AO Outputs Channel 3^Motor_Speed"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Gas_Valve" VarB="AO Outputs Channel 1^Gas_Valve"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Mixer_Valve" VarB="AO Outputs Channel 2^Mixer_Valve "/>
+				<Link VarA="PlcTask Outputs^GVL_IO.Motor_speed" VarB="AO Outputs Channel 3^Motor_Speed"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 8 (EL3024)">
-				<Link VarA="PlcTask Inputs^MAIN.Pressure_Differencial_Transmitter_1" VarB="AI Standard Channel 1^PDT 1"/>
-				<Link VarA="PlcTask Inputs^MAIN.Pressure_Differencial_Transmitter_2" VarB="AI Standard Channel 3^PDT 2"/>
-				<Link VarA="PlcTask Inputs^MAIN.Pressure_Transmitter_1" VarB="AI Standard Channel 2^PT 1"/>
-				<Link VarA="PlcTask Inputs^MAIN.Pressure_Transmitter_3" VarB="AI Standard Channel 4^PT 3"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Pressure_Differencial_Transmitter_1" VarB="AI Standard Channel 1^PDT 1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Pressure_Differencial_Transmitter_2" VarB="AI Standard Channel 3^PDT 2"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Pressure_Transmitter_1" VarB="AI Standard Channel 2^PT 1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Pressure_Transmitter_3" VarB="AI Standard Channel 4^PT 3"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 9 (EL3024)">
-				<Link VarA="PlcTask Inputs^MAIN.Level_Transmitter_1" VarB="AI Standard Channel 2^ Level Transmitter 1"/>
-				<Link VarA="PlcTask Inputs^MAIN.Level_Transmitter_2" VarB="AI Standard Channel 3^Level Transmitter 2"/>
-				<Link VarA="PlcTask Inputs^MAIN.Pressure_Transmitter_2" VarB="AI Standard Channel 1^PT 2"/>
-				<Link VarA="PlcTask Inputs^MAIN.Temperature_Transmitter" VarB="AI Standard Channel 4^Temperature Transmitter"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Level_Transmitter_1" VarB="AI Standard Channel 2^ Level Transmitter 1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Level_Transmitter_2" VarB="AI Standard Channel 3^Level Transmitter 2"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Pressure_Transmitter_2" VarB="AI Standard Channel 1^PT 2"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.Temperature_Transmitter" VarB="AI Standard Channel 4^Temperature Transmitter"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

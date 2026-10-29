@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <DUT Name="ST_Motor" Id="{728b9bb3-1a0f-4ab8-9343-e68ceaebe79d}">
+    <Declaration><![CDATA[// HMI interface for the pump motor. Commands are written by the HMI, status by FB_Motor.
+TYPE ST_Motor :
+STRUCT
+	// Commands
+	eMode          : E_ControlMode := E_ControlMode.eManual;
+	bManualOn      : BOOL;
+	bManualReverse : BOOL;
+	rManualSpeed   : REAL;	// % of full speed
+	// Status
+	bRunning       : BOOL;
+	bReverse       : BOOL;
+	rSpeed         : REAL;	// % sent to the drive
+	rRpm           : REAL;	// Estimated motor RPM
+	bLimited       : BOOL;	// Speed capped by the RPM limit
+	bInterlocked   : BOOL;	// Held off by emergency stop
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

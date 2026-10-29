@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <DUT Name="E_SeparatorState" Id="{cfb4e946-3c64-42d1-9b31-1ae2bfc55f0e}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+// Steps of the separation sequence (flow chart + project description steps 1-6).
+// The numbers are shown as the step indicator on the HMIs.
+TYPE E_SeparatorState :
+(
+	eIdle       := 0,	// Initial values, waiting for bStart
+	eStarting   := 10,	// Step 1: FV1 100 %, LV1 open, LV2/LV3 closed, motor < 1000 RPM
+	eFilling    := 20,	// Step 2: fill until LT2 is 5-6 cm below the weir top
+	eSeparating := 30,	// Step 3: PI on LV2 for 3 min, LV3 closed
+	eLogging    := 40,	// Step 4: measure and log PDT2
+	eEmptying   := 50,	// Step 5: flush, empty all tanks
+	eStopped    := 60,	// Step 6: stop
+	eAlarm      := 90,	// Alarm handling, returns to the calling point
+	eEmergency  := 99	// Emergency / safe state, needs bReset
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
