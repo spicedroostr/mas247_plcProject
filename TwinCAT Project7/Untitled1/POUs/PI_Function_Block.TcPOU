@@ -37,7 +37,7 @@ END_VAR]]></Declaration>
 IF NOT bEnable THEN
 	Integ := 0.0;
 	dInteg := 0.0;
-	Output := 0.0;
+	Output := Main.Level_Valve_2_Percentage;
 	RETURN;
 END_IF
 

@@ -1033,6 +1033,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_Differential_Transmitter_2_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.Pressure_Transmitter_1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -4541,6 +4551,7 @@
                 "ADS.PLC1.MAIN.PI_Controller.Ti": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_2": 3,
+                "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_3": 3,

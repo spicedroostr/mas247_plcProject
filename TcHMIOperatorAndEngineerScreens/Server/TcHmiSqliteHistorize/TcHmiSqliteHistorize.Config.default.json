@@ -26,6 +26,12 @@
             "recordingEnabled": true,
             "rowLimit": 100000
         },
+        "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": {
+            "interval": "PT1S",
+            "maxEntries": 10000,
+            "recordingEnabled": true,
+            "rowLimit": 100000
+        },
         "ADS.PLC1.MAIN.Pressure_Transmitter_1": {
             "interval": "PT1S",
             "maxEntries": 10000,
