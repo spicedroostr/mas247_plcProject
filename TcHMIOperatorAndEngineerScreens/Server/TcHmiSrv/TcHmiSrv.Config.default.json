@@ -905,6 +905,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Motor_speed_Percentage": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Motor_speed_Percentage",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.PI_Controller.Bias": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -1030,6 +1040,23 @@
             "MAPPING": "PLC1::MAIN::Temperature_Transmitter",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.bControllerActive": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bControllerActive",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "PI controller on/off state"
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -4105,6 +4132,7 @@
                 "ADS.PLC1.MAIN.Level_Valve_2_Percentage": 3,
                 "ADS.PLC1.MAIN.Level_Valve_3_Percentage": 3,
                 "ADS.PLC1.MAIN.Motor_ON": 3,
+                "ADS.PLC1.MAIN.Motor_speed_Percentage": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Bias": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Kp": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Setpoint": 3,
@@ -4115,6 +4143,7 @@
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_3": 3,
                 "ADS.PLC1.MAIN.Temperature_Transmitter": 3,
+                "ADS.PLC1.MAIN.bControllerActive": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,

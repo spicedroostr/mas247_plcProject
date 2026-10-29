@@ -28,11 +28,11 @@ VAR
 	
 	//User Input as percentage
 	Flow_Valve_1_Percentage: INT :=100;
-	Level_Valve_1_Percentage: INT    ;
+	Level_Valve_1_Percentage: INT  := 0;
 	Level_Valve_2_Percentage: INT := 0;
-	Level_Valve_3_Percentage: INT;
-	Motor_speed_Percentage: INT; 
-	Motor_ON : BOOL ; 
+	Level_Valve_3_Percentage: INT := 0;
+	Motor_speed_Percentage: INT := 0;
+	Motor_ON : BOOL ;
 	ON_OFF : STRING(10) := 'OFF' ; 
 	
 	//Scaled values
@@ -43,19 +43,18 @@ VAR
 	PI_Controller : PI_Function_Block;
 	
 	//PI controller on/off state
-	bStartButton : BOOL;
-	bStopButton : BOOL;
-	BControllerActive : BOOL;
+	bControllerActive : BOOL;
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-PI_Controller();
+
 PI_Controller(bEnable := bControllerActive);
 Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
 Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
-PI_Controller(Actual := Level_Transmitter_2_scaled);
+PI_Controller(Actual := Level_Transmitter_2_scaled,
+bEnable := bControllerActive);
 Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
 
 
