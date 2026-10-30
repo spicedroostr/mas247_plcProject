@@ -144,10 +144,8 @@ ELSE
 END_IF
 
 
-fbPressAlarm(rValue:= rTemprature, rLimit := 80.0, bReset:=bAlarmreset):
-	
-fbPressAlarm
-
+fbTempAlarm(rValue := rTemperature, rLimit := 80.0, bReset := bAlarmReset);
+fbPressAlarm(rValue := rPressure, rLimit := 4.0, bReset := bAlarmReset);
 
 
 
