@@ -362,3 +362,17 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /SkeletonProject.~u
+
+## TwinCAT 3 - genererte filer (lages på nytt ved build)
+_Boot/
+_CompileInfo/
+_Libraries/
+_ModuleInstall/
+LineIDs.dbg
+*.compileinfo
+*.tsproj.bak
+*.tpy
+*.tclrs
+*.~u
+debug.log
+UpgradeLog.htm
