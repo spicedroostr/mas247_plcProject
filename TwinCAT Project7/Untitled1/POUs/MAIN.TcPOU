@@ -198,7 +198,7 @@ END_IF
 
 
 fbTempAlarm(rValue := Temperature_1_Scaled, rLimit := 80.0, bReset := bAlarmReset);
-fbPressAlarm(rValue := Pressure_1_Bar_Scaled, rLimit := 4.0, bReset := bAlarmReset);
+fbPressAlarm(rValue := MAX(Pressure_1_Bar_Scaled, MAX(Pressure_2_Bar_Scaled, Pressure_3_Bar_Scaled)), rLimit := 4.0, bReset := bAlarmReset);
 
 
 
