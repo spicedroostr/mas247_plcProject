@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="FB_Scale" Id="{35177975-a3ce-4511-97fb-bca3bc45eb06}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Scale
+VAR_INPUT
+    RawValue : INT;       
+    RawMin   : REAL := 0.0;     
+    RawMax   : REAL := 32767.0; 
+    PhysMin  : REAL;      
+    PhysMax  : REAL;      
+END_VAR
+
+VAR_OUTPUT
+    ScaledValue : REAL;   
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Error handling to prevent division by zero.
+IF (RawMax - RawMin) <> 0.0 THEN
+    ScaledValue :=  PhysMin + (PhysMax - PhysMin) * (INT_TO_REAL(RawValue) - RawMin) / (RawMax - RawMin);
+ELSE
+    ScaledValue := PhysMin;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
