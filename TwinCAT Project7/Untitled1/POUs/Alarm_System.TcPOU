@@ -17,13 +17,13 @@ IF NOT bAlarmsCreated THEN
 END_IF
 
 // Warnings: aktive så lenge verdien er over grensen
-IF MAIN.Temperature_1 > 70.0 THEN
+IF MAIN.Temperature_1_Scaled > 70.0 THEN
     IF NOT gAL.fbTempWarning.bRaised THEN gAL.fbTempWarning.Raise(0); END_IF
 ELSIF gAL.fbTempWarning.bRaised THEN
     gAL.fbTempWarning.Clear(0, FALSE);
 END_IF
 
-IF MAIN.Pressure_1_Bar > 3.5 THEN
+IF MAIN.Pressure_1_Bar_Scaled > 3.5 THEN
     IF NOT gAL.fbPressWarning.bRaised THEN gAL.fbPressWarning.Raise(0); END_IF
 ELSIF gAL.fbPressWarning.bRaised THEN
     gAL.fbPressWarning.Clear(0, FALSE);
