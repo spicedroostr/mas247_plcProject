@@ -68,6 +68,12 @@
       "preloadBindings": false
     },
     {
+      "url": "Operator Screen.view",
+      "preload": false,
+      "keepAlive": false,
+      "preloadBindings": false
+    },
+    {
       "url": "TrendView.view",
       "preload": false,
       "keepAlive": false,

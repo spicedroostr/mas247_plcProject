@@ -158,6 +158,9 @@
     <Content Include="Images\SVG files\tank_horizontal_without_claff.svg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Operator Screen.view">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
       <SubType>Content</SubType>
     </Content>
