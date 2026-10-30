@@ -14,6 +14,7 @@ VAR_INPUT
     OutMax :REAL := 100;
     OutMin :REAL := 0;
     bEuler :BOOL := FALSE;
+	bEnable :BOOL;
 END_VAR
 
 VAR_OUTPUT
@@ -32,6 +33,13 @@ VAR
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[Error := Actual - Setpoint;
+
+IF NOT bEnable THEN
+	Integ := 0.0;
+	dInteg := 0.0;
+	Output := Main.Level_Valve_2_Percentage;
+	RETURN;
+END_IF
 
 IF Ti > 0.0 THEN
     IF bEuler THEN

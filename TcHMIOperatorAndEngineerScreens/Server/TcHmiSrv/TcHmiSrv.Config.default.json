@@ -62,6 +62,16 @@
             "REQUIRED": true,
             "STARTUPTYPE": 0
         },
+        "TcHmiSqliteHistorize": {
+            "ENABLED": true,
+            "METADATA": {
+                "migrationVersion": "1.14"
+            },
+            "NAME": "TcHmiSqliteHistorize",
+            "PATH": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.SqliteHistorize.25.0.122\\runtimes\\win-x64\\native\\",
+            "REQUIRED": false,
+            "STARTUPTYPE": 1
+        },
         "TcHmiSqliteLogger": {
             "ENABLED": true,
             "METADATA": {
@@ -261,7 +271,13 @@
     "SAMESITE_ATTRIBUTE": 2,
     "SELFSIGNEDROOTCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUR3akNDQXFxZ0F3SUJBZ0lKQUlXUzFVSnp2MThKTUEwR0NTcUdTSWIzRFFFQkN3VUFNRUV4Q3pBSkJnTlYKQkFZVEFrUkZNUnN3R1FZRFZRUUtEQkpVZDJsdVEwRlVJRWhOU1NCVFpYSjJaWEl4RlRBVEJnTlZCQU1NREZwbApibUp2YjJ0ZmNtOXZkREFlRncweU5qRXdNalF4TXpReE16SmFGdzB5T1RFd01qUXdOelF4TXpKYU1FRXhDekFKCkJnTlZCQVlUQWtSRk1Sc3dHUVlEVlFRS0RCSlVkMmx1UTBGVUlFaE5TU0JUWlhKMlpYSXhGVEFUQmdOVkJBTU0KREZwbGJtSnZiMnRmY205dmREQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUs2Nwo0dHRQVU55VHU2Tks5SGxhWE8yUnNiRmF5YTFyMUJUMS84Y0syd3gzekJQOXJodjcxVG9jMGQzN3NOUlBIWWtsCmsvbyt2QU1tcUgzTFdmaWY3c2VNaCtETDZBam8vcTlGb2tuTFgyY2s5TlV1cCt5amVhTkRRcHUxTXZlekp2ZEYKY0NLeElPVzB2d0VocXFsVXZ1bWhUQ01JZmk1Y3BJTFV1TGNobFhqbFZhdDZObHRLeFFUazVaYjVPdkpER1JMLwpENkdNWmJIYzlaUmNUQ1IxN1RuS1QvQnRoazVxbS9NYWEyWGozSDIvZVV1cG5LVXhWSTk4T1BXSDIxcUl1TnJDClRMU2U3SWZxbi9LaE1LRmpmSTdBY0plMWdFYWZqZU04bS9JMm9tTlhZRHdhOGVsWjRYUlpVTjJFZEJIT3U3WjQKS09rNHFLYUhLTmY3WDk2WGJFc0NBd0VBQWFPQnZEQ0J1VEJXQmdOVkhSRUVUekJOZ2dsc2IyTmhiR2h2YzNTSApCSDhBQUFHSEVBQUFBQUFBQUFBQUFBQUFBQUFBQUFHQ0IxcGxibUp2YjJ1Q0IxcGxibUp2YjJ1SEJBcjFIdm1ICkVQNkFBQUFBQUFBQU1aMGlkZlIzNGg4d0hRWURWUjBPQkJZRUZLRW0vbHRvZnZOeS9SQjJGVW43L1dxelkwZkIKTUI4R0ExVWRJd1FZTUJhQUZLRW0vbHRvZnZOeS9SQjJGVW43L1dxelkwZkJNQThHQTFVZEV3RUIvd1FGTUFNQgpBZjh3RGdZRFZSMFBBUUgvQkFRREFnRUdNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUNJcFRyL1piMEIxOGtGCjBBN0RPMlgyU3RqT281SExDaXpIbHJRRVBvRWRNdElUZUt6cGdtdmlXcy83RGUzcllRT3Z1ckJ3akxOTDN1dlcKY2lNUE84RzFobWREYXR4VzFpYXppMVE1TGdvK1EvcnM1QU4zVkJEazBsZE52SzlUTjFSNFZ6WlNZSUVuSjJQQwpnRFZBSW9Hd2NBVU9sMTVodEp2NXRTaDF3NXVZM1ByZjdjdlBEN1RNOWx5aFU0ZEVKYm5EYzdNNEtVRksrZVgvCkxpVStNQjJNeDBZcE4wcnQ0M1pjdTBYWG4xVWRaYnZZRkhpOEpRbVE2ZlFRdlJ2UWJEcVo5RHZ3U0NvcFl1bDQKREk5L2hINlpQZ3hpWlF1UitVSmNYaHpoOWl4MDMvb2FFSTBvZkRscnpHWEUrY2d2QjVPaG5pT3lJM3k0dUJwUAo4ejV3djJKZgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
     "SELFSIGNEDROOTCAKEY": "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRQ3V1K0xiVDFEY2s3dWoKU3ZSNVdsenRrYkd4V3NtdGE5UVU5Zi9IQ3RzTWQ4d1QvYTRiKzlVNkhOSGQrN0RVVHgySkpaUDZQcndESnFoOQp5MW40bis3SGpJZmd5K2dJNlA2dlJhSkp5MTluSlBUVkxxZnNvM21qUTBLYnRUTDNzeWIzUlhBaXNTRGx0TDhCCklhcXBWTDdwb1V3akNINHVYS1NDMUxpM0laVjQ1VldyZWpaYlNzVUU1T1dXK1RyeVF4a1MvdytoakdXeDNQV1UKWEV3a2RlMDV5ay93YllaT2FwdnpHbXRsNDl4OXYzbExxWnlsTVZTUGZEajFoOXRhaUxqYXdreTBudXlINnAveQpvVENoWTN5T3dIQ1h0WUJHbjQzalBKdnlOcUpqVjJBOEd2SHBXZUYwV1ZEZGhIUVJ6cnUyZUNqcE9LaW1oeWpYCisxL2VsMnhMQWdNQkFBRUNnZ0VBT1RTcUFNTG01bEEzamk1cis0N3AvWjFGWDVzcGkrMVJjY3RZQWdJNzFNa2oKdHlmR2FNTDUvQnlUV09tZDZ1UTc5enFtUjdkaU5tWGhvODEvbHpaRkptK0x6THoxS25XZGJDU1FEVGpYOHh6VwpTelVMSlI0Z0pLTlFtMG1uZGhEaElQTksweERLaEdtNFh0WjIyUmsxcDZkM0ZjRWlEbXVtTUc4VVNtQmtYeityClhJQTZuN0U3dVFkeXR2TEV3TGxZZkg1aXd1TElwWDRNZjJ1d3h1LzFFbmxVb3YwYUozV3dCRnUwbHhTcmhoUUIKczFhR1BONkkvWHg3czRtaWNaOHBaWEN2NnZSRG96SGowaFFON2ZCL2NRdmtwcmtwVnNjMVB5UndaeVovTUxMOAp3RHdLS3dkRWp4OFh2N054Q2pqNXc3YjA2emREZXNiVkNCVHBFbzRtQVFLQmdRRFdmTVhycTl2R0cyeW1zcDRkCjlidlJGeUtkRFFBK1R5dVlONnBLNzVubk5KdHVnRjJjb1VaMGpSUFpFOVlCMWVETXhMZnZJcUJlcndBV21aMDMKYWFaYnFQUjNhejI1NjVXSHNDeEtyZUc1QjJLL09ZZGxwUVlneTJCbERybWZTOFNuZTVreFBwWFJDT2hiaGxRZgpzOW96MmVadTlERnVrUC9ucVdVdS9Xbmt1d0tCZ1FEUWpYSEYwWGF2d1lpRjdVTk5QamkxMzdkcjRpMjE1QXR5ClpEdlZkV0FzNzNCM1Z3aUFiMHB2b1hLRCtEZzBENGtPa0RNNzRmWGd1L1VPZ1VVT2hXTVhkZFg2WDZwVWdKWHEKOStrb1hJV2M4clZ3bnV3TkUvRjZ3eXpIMWdyM3ZqUnlSVVVjeWQybVpJWnl4eDFyNERqVGY1ZFp0Mm1Pb1NWUwo4dWdUQW4vbHNRS0JnRFB2Z0lsQlV2VVVYT204WkhjQ3NwaTlqbDhTNzlVbW5IcStOOWp2VFlmamdDTndwN291CmZ2M256eitJQXhEc3RnTS9PdjZIbHVkMlhvSWFiaXdsdytkNzhMNGQxSk41VFByUEdOcDRZaWpJZGd1eHBXeGkKV2lxRXRIR2o4Q1IzVjBYcXNyeHUyQjRHbHlUYVVQSmdQVnpDelg1ZVdMM2FGRzBHNG41UFZGM1RBb0dCQUpnNApsWEY0K1BOQ0JIOFVkY284ZnpJbzczMWNJbGNmODBiMGFFUGVuMnRNL1Q3dUZMT0NCOGZCQkkvVXJsazVlYVZhCmxUckJMREZ6bjJPTjhUU3ZJV3V2UTVhekd1VUEwZXdtTlZXVGFxYnE5SW9XUlY4cVRsaDNld2tGYnczekU5N1EKTnFqVG91ZmZlYzd2RE1kL2FwcmRCMENod2Zjc0ljMFFwVm15dWwyUkFvR0FDdzRwNmdpZkxhRXVocjhDZDNzVQpuK0NCeHFKVkp5OHFRSDZFTE1ZZXVSeCtDMnVkNDhkWmdsb3ZwZ2xPdTZ4NGNzNll2ZUNnTUZWc0FseGZRZTA0ClNYWHVzVmFnV0lpa0NpclVnaGtsVW1ZN3ZLaUQxVC9oNDBSZ0ttNHozYlY4azdSZGY0aDNyeGVFY0JlVVovbmcKTlpXZmhYcFNNSlY1amc3U0ZNSk03Wkk9Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K",
-    "SESSIONSTORAGE": {},
+    "SESSIONSTORAGE": {
+        "37bd93bd3ada479e5cd00b8a6b33a5a3acf14d182758fb6811c7f6ef2b1f0088": {
+            "created": "2026-10-30T11:43:44.7098263Z",
+            "domain": "TcHmiUserManagement",
+            "userName": "Engineer"
+        }
+    },
     "SHOW_CONFIGURATION_HINTS": true,
     "SHOW_MAINTENANCE_MODE": true,
     "SHUTDOWNTIMEOUT": "PT10S",
@@ -794,6 +810,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.BControllerActive": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::BControllerActive",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.EMERGENCY_STOP": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -818,6 +844,16 @@
                         "comment": "User Input as percentage"
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Level_Transmitter_1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Level_Transmitter_1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT"
             },
             "USEMAPPING": true
         },
@@ -895,6 +931,94 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Motor_ON_OFF": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Motor_ON_OFF",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Motor_speed_Percentage": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Motor_speed_Percentage",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.PI_Controller.Bias": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::PI_Controller::Bias",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/REAL"
+                    },
+                    {
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.PI_Controller.Kp": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::PI_Controller::Kp",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/REAL"
+                    },
+                    {
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.PI_Controller.Setpoint": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::PI_Controller::Setpoint",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/REAL"
+                    },
+                    {
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.PI_Controller.Ti": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::PI_Controller::Ti",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/REAL"
+                    },
+                    {
+                        "propertyOrder": 5
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -912,6 +1036,16 @@
             "MAPPING": "PLC1::MAIN::Pressure_Differencial_Transmitter_2",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_Differential_Transmitter_2_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
             },
             "USEMAPPING": true
         },
@@ -952,6 +1086,23 @@
             "MAPPING": "PLC1::MAIN::Temperature_Transmitter",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.bControllerActive": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bControllerActive",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "PI controller on/off state"
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -3270,6 +3421,374 @@
             "SCHEMA": {},
             "USEMAPPING": true
         },
+        "TcHmiSqliteHistorize.Config": {
+            "ACCESS": 0,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "Config",
+            "OPTIONS": {},
+            "SCHEMA": {},
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.DeleteDatabaseEntries": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "DeleteDatabaseEntries",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "writeValue": {
+                    "properties": {
+                        "disableRecording": {
+                            "description": "Disables the recording of one or all historize symbols depending if 'symbolName' is set.",
+                            "type": "boolean"
+                        },
+                        "symbolName": {
+                            "description": "Delete database entries of symbol. If 'symbolName' is not set, all entries in the database will be deleted.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.Diagnostics": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "Diagnostics",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "additionalProperties": false,
+                "function": true,
+                "properties": {
+                    "databaseSize": {
+                        "propertyOrder": 1,
+                        "type": "number",
+                        "unit": "byte"
+                    },
+                    "estimatedDatabaseSize": {
+                        "propertyOrder": 5,
+                        "type": "number",
+                        "unit": "byte"
+                    },
+                    "estimatedDatabaseSizePerSymbol": {
+                        "additionalProperties": {
+                            "type": "number",
+                            "unit": "byte"
+                        },
+                        "type": "object"
+                    },
+                    "numEntries": {
+                        "configDescription": "descNumEntries",
+                        "propertyOrder": 2,
+                        "type": "integer"
+                    },
+                    "numEntriesLifetime": {
+                        "configDescription": "descNumEntries",
+                        "propertyOrder": 3,
+                        "type": "number"
+                    },
+                    "recordingTime": {
+                        "format": "timespan",
+                        "propertyOrder": 4,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.GetTrendLineData": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "GetTrendLineData",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "anyOf": [
+                    {
+                        "function": true,
+                        "properties": {
+                            "axesData": {
+                                "description": "Array with sub-array for each symbol.",
+                                "items": {
+                                    "items": {
+                                        "properties": {
+                                            "error": {
+                                                "description": "Error code associated with the data point.",
+                                                "type": "number"
+                                            },
+                                            "flags": {
+                                                "description": "Recording state flags indicating when data recording started or stopped.",
+                                                "type": "string"
+                                            },
+                                            "x": {
+                                                "description": "Recording time of data point.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            },
+                                            "y": {
+                                                "description": "Historized value.",
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object",
+                        "versions": [
+                            1.0
+                        ],
+                        "writeValue": {
+                            "properties": {
+                                "chartName": {
+                                    "description": "TrendLineChart name.",
+                                    "type": "string"
+                                },
+                                "displayWidth": {
+                                    "description": "Display width of the TrendLineChart in pixels.",
+                                    "maximum": 10240.0,
+                                    "minimum": 2.0,
+                                    "type": "number"
+                                },
+                                "xAxisEnd": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "xAxisStart": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "yAxes": {
+                                    "items": {
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "symbol": {
+                                                "description": "Symbol name.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "symbol"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "type": "array",
+                                    "uniqueItems": true
+                                }
+                            },
+                            "required": [
+                                "chartName",
+                                "yAxes",
+                                "xAxisStart",
+                                "displayWidth"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "function": true,
+                        "properties": {
+                            "analyticsData": {
+                                "description": "Array with analytics data for each symbol.",
+                                "items": {
+                                    "properties": {
+                                        "average": {
+                                            "description": "The average value of all data points in the requested time range.",
+                                            "type": "number"
+                                        },
+                                        "maximum": {
+                                            "description": "The maximum value of all data points in the requested time range.",
+                                            "type": "number"
+                                        },
+                                        "minimum": {
+                                            "description": "The minimum value of all data points in the requested time range.",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "axesData": {
+                                "description": "Array with sub-array for each symbol.",
+                                "items": {
+                                    "items": {
+                                        "properties": {
+                                            "error": {
+                                                "description": "Error code associated with the data point.",
+                                                "type": "number"
+                                            },
+                                            "flags": {
+                                                "description": "Recording state flags indicating when data recording started or stopped.",
+                                                "type": "string"
+                                            },
+                                            "x": {
+                                                "description": "Recording time of data point.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            },
+                                            "y": {
+                                                "description": "Historized value.",
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object",
+                        "versions": [
+                            2.0
+                        ],
+                        "writeValue": {
+                            "properties": {
+                                "analyticsType": {
+                                    "description": "Specifies which analytics calculations to perform on the retrieved data.",
+                                    "items": {
+                                        "enum": [
+                                            "minimum",
+                                            "maximum",
+                                            "average"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "chartName": {
+                                    "description": "TrendLineChart name.",
+                                    "type": "string"
+                                },
+                                "displayWidth": {
+                                    "description": "Display width of the TrendLineChart in pixels.",
+                                    "maximum": 10240.0,
+                                    "minimum": 2.0,
+                                    "type": "number"
+                                },
+                                "xAxisEnd": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "xAxisStart": {
+                                    "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                                },
+                                "yAxes": {
+                                    "items": {
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "symbol": {
+                                                "description": "Symbol name.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "symbol"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "type": "array",
+                                    "uniqueItems": true
+                                }
+                            },
+                            "required": [
+                                "chartName",
+                                "yAxes",
+                                "xAxisStart",
+                                "displayWidth"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.GetTrendLineWindow": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "GetTrendLineWindow",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "properties": {
+                    "xAxisEnd": {
+                        "description": "Timestamp from recording.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "xAxisStart": {
+                        "description": "Timestamp from recording.",
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "writeValue": {
+                    "properties": {
+                        "chartName": {
+                            "description": "TrendLineChart name.",
+                            "type": "string"
+                        },
+                        "xAxisEnd": {
+                            "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                        },
+                        "xAxisStart": {
+                            "$ref": "tchmi:server#/definitions/TcHmiSqliteHistorize-stringTypeArray"
+                        },
+                        "yAxes": {
+                            "description": "Start and end time for TrendLineChart.",
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "symbol": {
+                                        "description": "Symbol name.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "symbol"
+                                ],
+                                "type": "object"
+                            },
+                            "type": "array",
+                            "uniqueItems": true
+                        }
+                    },
+                    "required": [
+                        "chartName",
+                        "yAxes",
+                        "xAxisStart"
+                    ],
+                    "type": "object"
+                }
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiSqliteHistorize.HistorizeData": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiSqliteHistorize",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "HistorizeData",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true
+            },
+            "USEMAPPING": true
+        },
         "TcHmiSqliteLogger.Clear": {
             "ACCESS": 3,
             "DOMAIN": "TcHmiSqliteLogger",
@@ -3968,12 +4487,46 @@
     "UPLOADTIMEOUT": "PT1M",
     "USEINT64STRING": true,
     "USERGROUPS": {
+        "Engineers": {
+            "ENABLED": true,
+            "FILEACCESS": 3,
+            "FILES": {},
+            "SYMBOLACCESS": 0,
+            "SYMBOLS": {
+                "AddOrChangeUser": 0,
+                "ChangeUserSettings": 0,
+                "RemoveUser": 0,
+                "TcHmiUserManagement.AddUser": 0,
+                "TcHmiUserManagement.DisableUser": 0,
+                "TcHmiUserManagement.EnableUser": 0,
+                "TcHmiUserManagement.RemoveUser": 0,
+                "TcHmiUserManagement.RenameUser": 0
+            }
+        },
+        "Operators": {
+            "ENABLED": true,
+            "FILEACCESS": 3,
+            "FILES": {},
+            "SYMBOLACCESS": 0,
+            "SYMBOLS": {
+                "AddOrChangeUser": 0,
+                "ChangeUserSettings": 0,
+                "RemoveUser": 0,
+                "TcHmiUserManagement.AddUser": 0,
+                "TcHmiUserManagement.DisableUser": 0,
+                "TcHmiUserManagement.EnableUser": 0,
+                "TcHmiUserManagement.RemoveUser": 0,
+                "TcHmiUserManagement.RenameUser": 0
+            }
+        },
         "__SystemAdministrators": {
             "ENABLED": true,
             "FILEACCESS": 3,
             "FILES": {},
             "SYMBOLACCESS": 3,
-            "SYMBOLS": {}
+            "SYMBOLS": {
+                "TcHmiSqliteHistorize.DeleteDatabaseEntries": 3
+            }
         },
         "__SystemGuests": {
             "ENABLED": true,
@@ -4018,20 +4571,30 @@
                 "ADS.AdsSyncReadStateReq": 3,
                 "ADS.CheckLicense": 3,
                 "ADS.Diagnostics": 3,
+                "ADS.PLC1.MAIN.BControllerActive": 3,
                 "ADS.PLC1.MAIN.EMERGENCY_STOP": 3,
                 "ADS.PLC1.MAIN.Flow_Valve_1_Percentage": 3,
+                "ADS.PLC1.MAIN.Level_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Level_Transmitter_1_Scaled": 3,
                 "ADS.PLC1.MAIN.Level_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Level_Valve_1_Percentage": 3,
                 "ADS.PLC1.MAIN.Level_Valve_2_Percentage": 3,
                 "ADS.PLC1.MAIN.Level_Valve_3_Percentage": 3,
                 "ADS.PLC1.MAIN.Motor_ON": 3,
+                "ADS.PLC1.MAIN.Motor_ON_OFF": 3,
+                "ADS.PLC1.MAIN.Motor_speed_Percentage": 3,
+                "ADS.PLC1.MAIN.PI_Controller.Bias": 3,
+                "ADS.PLC1.MAIN.PI_Controller.Kp": 3,
+                "ADS.PLC1.MAIN.PI_Controller.Setpoint": 3,
+                "ADS.PLC1.MAIN.PI_Controller.Ti": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_2": 3,
+                "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_3": 3,
                 "ADS.PLC1.MAIN.Temperature_Transmitter": 3,
+                "ADS.PLC1.MAIN.bControllerActive": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,
@@ -4057,6 +4620,10 @@
                 "Logout": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
+                "TcHmiSqliteHistorize.Diagnostics": 3,
+                "TcHmiSqliteHistorize.GetTrendLineData": 3,
+                "TcHmiSqliteHistorize.GetTrendLineWindow": 3,
+                "TcHmiSqliteHistorize.HistorizeData": 3,
                 "TcHmiSqliteLogger.Diagnostics": 3,
                 "TcHmiUserManagement.ChangePassword": 3,
                 "TcHmiUserManagement.Disable2FA": 3,
@@ -4072,6 +4639,28 @@
     },
     "USERGROUPUSERS": {
         "TcHmiUserManagement": {
+            "Engineer": {
+                "USERGROUPUSERS_AUTO_LOGOFF": "P30D",
+                "USERGROUPUSERS_FORCE_PASSWORD_CHANGE": false,
+                "USERGROUPUSERS_GROUPS": [
+                    "__SystemUsers",
+                    "Engineers"
+                ],
+                "USERGROUPUSERS_LOCALE": "client",
+                "USERGROUPUSERS_TIMEFORMATLOCALE": "project",
+                "USERGROUPUSERS_TIMEZONE": "project"
+            },
+            "Operator": {
+                "USERGROUPUSERS_AUTO_LOGOFF": "P30D",
+                "USERGROUPUSERS_FORCE_PASSWORD_CHANGE": false,
+                "USERGROUPUSERS_GROUPS": [
+                    "__SystemUsers",
+                    "Operators"
+                ],
+                "USERGROUPUSERS_LOCALE": "client",
+                "USERGROUPUSERS_TIMEFORMATLOCALE": "project",
+                "USERGROUPUSERS_TIMEZONE": "project"
+            },
             "__SystemAdministrator": {
                 "USERGROUPUSERS_AUTO_LOGOFF": "PT0S",
                 "USERGROUPUSERS_FORCE_2FA_INIT": false,
