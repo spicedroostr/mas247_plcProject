@@ -94,9 +94,49 @@
 		</System>
 		<Plc>
 			<Project GUID="{BB83E7FB-8A00-45A7-8525-3E7D21D20878}" Name="Untitled1" PrjFilePath="Untitled1\Untitled1.plcproj" TmcFilePath="Untitled1\Untitled1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{5F5D399B-D16D-5766-C94C-ECADD76C1C40}" TmcPath="Untitled1\Untitled1.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{ED70E060-A2D1-A9F5-BA29-01AF7723E810}" TmcPath="Untitled1\Untitled1.tmc">
 					<Name>Untitled1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>MAIN.Motor_ON_OFF</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Flow_Valve_1</Name>
+							<Comment><![CDATA[Linking variables to IO cards]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Level_Valve_1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Level_Valve_2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Level_Valve_3</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Gas_Valve</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Mixer_Valve</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Motor_speed</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Motor_Direction</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
@@ -142,46 +182,6 @@
 						<Var>
 							<Name>MAIN.Pressure_Transmitter_3</Name>
 							<Type>INT</Type>
-						</Var>
-					</Vars>
-					<Vars VarGrpType="2" AreaNo="1">
-						<Name>PlcTask Outputs</Name>
-						<Var>
-							<Name>MAIN.Motor_ON_OFF</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Flow_Valve_1</Name>
-							<Comment><![CDATA[Linking variables to IO cards]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Level_Valve_1</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Level_Valve_2</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Level_Valve_3</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Gas_Valve</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Mixer_Valve</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Motor_speed</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Motor_Direction</Name>
-							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -847,6 +847,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^Untitled1^Untitled1 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 12 (EL1859)">
 				<Link VarA="PlcTask Inputs^MAIN.EMERGENCY_STOP" VarB="Channel 1^EMERGENCY STOP"/>

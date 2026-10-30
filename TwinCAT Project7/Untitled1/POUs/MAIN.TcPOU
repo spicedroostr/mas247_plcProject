@@ -202,6 +202,8 @@ IF NOT fbControlPanel.bRunning THEN
 	bControllerActive       := FALSE;
 	Flow_Valve_1_Percentage := 100;
 	Level_Valve_1_Percentage := 100;
+ELSE
+	Motor_ON_OFF            := TRUE;
 END_IF
 
 // Flow_Valve_1 calibration
