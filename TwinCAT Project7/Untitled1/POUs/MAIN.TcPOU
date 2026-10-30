@@ -42,10 +42,22 @@ VAR
 	//PI function block instantiation
 	PI_Controller : PI_Function_Block;
 	
+	rTemperature   : REAL;      // Temperatur i °C
+    rPressure      : REAL;      // Trykk i bar
+    bAlarmReset    : BOOL;      // Reset-knapp fra HMI
+
+fbTempAlarm    : FB_Alarm;
+fbPressAlarm   : FB_Alarm;
+	
+	rTemprature: REAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[PI_Controller();
+      <ST><![CDATA[// skalerer, regulerer og sender ut signaler
+
+
+
+PI_Controller();
 Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
 Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
 PI_Controller(Actual := Level_Transmitter_2_scaled);
@@ -125,8 +137,9 @@ ELSE
 END_IF
 
 
-
-
+fbPressAlarm(rValue:= rTemprature, rLimit := 80.0, bReset:=bAlarmreset):
+	
+fbPressAlarm
 
 
 
