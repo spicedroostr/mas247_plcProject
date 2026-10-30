@@ -61,10 +61,26 @@ VAR
 	fbTempAlarm    : FB_Alarm;
 	fbPressAlarm   : FB_Alarm;
 	
+	// FYSISKE KNAPPER
+	fbControlPanel : FB_ControlPanel;
+	bHmiStart      : BOOL;
+	bHmiStop       : BOOL;
+	bHmiEStop      : BOOL;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// skalerer, regulerer og sender ut signaler
+      <ST><![CDATA[// Hovedbrytere
+fbControlPanel(
+	bStartPB  := Start_Button,
+	bStopPB   := Stop_Button,
+	bEStopPB  := EMERGENCY_STOP,
+	bHmiStart := bHmiStart,
+	bHmiStop  := bHmiStop,
+	bHmiEStop := bHmiEStop,
+	bReset    := bAlarmReset);
+
+// skalerer, regulerer og sender ut signaler
 
 Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
 Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
@@ -132,6 +148,14 @@ IF Motor_speed_Percentage > 100 THEN
 		Motor_speed_Percentage := 0; 
 	END_IF
 	
+END_IF
+
+// Safe state: motor off, PI off, flow valve fully open
+IF NOT fbControlPanel.bRunning THEN
+	Motor_ON_OFF            := FALSE;
+	Motor_speed_Percentage  := 0;
+	bControllerActive       := FALSE;
+	Flow_Valve_1_Percentage := 100;
 END_IF
 
 // Flow_Valve_1 calibration
