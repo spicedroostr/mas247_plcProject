@@ -815,6 +815,27 @@
 }
 </script>
 
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%ADS.PLC1.MAIN.PI_Controller.Setpoint%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/REAL",
+          "symbolExpression": "%ctx%owner::Value%/ctx%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
 </div>
 <div id="TcHmiNumericInput_8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="True" data-tchmi-decimal-digits="0" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="129" data-tchmi-left-unit="px" data-tchmi-reset-to-last-valid-value="True" data-tchmi-top="414" data-tchmi-top-unit="px" data-tchmi-value="%s%ADS.PLC1.MAIN.PI_Controller.Kp%/s%" data-tchmi-width="95" data-tchmi-width-unit="px">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">

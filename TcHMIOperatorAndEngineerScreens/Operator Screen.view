@@ -767,7 +767,7 @@
 </div>
 <div id="TcHmiTextblock_55" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px" data-tchmi-text="P-Value:" data-tchmi-top="424" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18">
 </div>
-<div id="TcHmiTextblock_56" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px" data-tchmi-text="I-Time value:" data-tchmi-top="470" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18">
+<div id="TcHmiTextblock_56" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px" data-tchmi-text="Ti-Value" data-tchmi-top="470" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18">
 </div>
 <div id="TcHmiTextblock_57" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px" data-tchmi-text="Bias:" data-tchmi-top="506" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18">
 </div>
@@ -781,39 +781,27 @@
 }
 </script>
 
-</div>
-<div id="TcHmiNumericInput_17" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="True" data-tchmi-decimal-digits="0" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="139" data-tchmi-left-unit="px" data-tchmi-reset-to-last-valid-value="True" data-tchmi-top="424" data-tchmi-top-unit="px" data-tchmi-value="%s%ADS.PLC1.MAIN.PI_Controller.Kp%/s%" data-tchmi-width="95" data-tchmi-width-unit="px">
-<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
-{
-  "top": 3,
-  "right": 3,
-  "bottom": 3,
-  "left": 3
-}
-</script>
 
-</div>
-<div id="TcHmiNumericInput_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="True" data-tchmi-decimal-digits="0" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="139" data-tchmi-left-unit="px" data-tchmi-reset-to-last-valid-value="True" data-tchmi-top="470" data-tchmi-top-unit="px" data-tchmi-value="%s%ADS.PLC1.MAIN.PI_Controller.Ti%/s%" data-tchmi-width="95" data-tchmi-width-unit="px">
-<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
-{
-  "top": 3,
-  "right": 3,
-  "bottom": 3,
-  "left": 3
-}
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onValueChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%ADS.PLC1.MAIN.PI_Controller.Setpoint%/s%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/REAL",
+          "symbolExpression": "%ctx%owner::Value%/ctx%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
 </script>
-
-</div>
-<div id="TcHmiNumericInput_19" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="True" data-tchmi-decimal-digits="0" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="139" data-tchmi-left-unit="px" data-tchmi-reset-to-last-valid-value="True" data-tchmi-top="506" data-tchmi-top-unit="px" data-tchmi-value="%s%ADS.PLC1.MAIN.PI_Controller.Bias%/s%" data-tchmi-width="95" data-tchmi-width-unit="px">
-<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
-{
-  "top": 3,
-  "right": 3,
-  "bottom": 3,
-  "left": 3
-}
-</script>
-
 </div>
 <div id="TcHmiButton_12" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="679" data-tchmi-left-unit="px" data-tchmi-text="Trend View" data-tchmi-top="36" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
@@ -890,5 +878,11 @@
   }
 ]
 </script>
+</div>
+<div id="TcHmiTextblock_58" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="139" data-tchmi-left-unit="px" data-tchmi-top="424" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18" data-tchmi-text="%s%ADS.PLC1.MAIN.PI_Controller.Kp%/s%">
+</div>
+<div id="TcHmiTextblock_59" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="139" data-tchmi-left-unit="px" data-tchmi-text="%s%ADS.PLC1.MAIN.PI_Controller.Ti%/s%" data-tchmi-top="470" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18">
+</div>
+<div id="TcHmiTextblock_60" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="139" data-tchmi-left-unit="px" data-tchmi-text="%s%ADS.PLC1.MAIN.PI_Controller.Bias%/s%" data-tchmi-top="506" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18">
 </div>
 </div>
