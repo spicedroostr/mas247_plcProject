@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Source>
+		<GUID>{275A3799-AC8F-436A-9FD3-F2D0F34E27D4}</GUID>
+		<Name LcId="1033">ProcessAlarm</Name>
+		<Event>
+			<Id>1</Id>
+			<Message LcId="1033">Temperature too high</Message>
+		</Event>
+		<Event>
+			<Id>2</Id>
+			<Message LcId="1033">Pressure too high</Message>
+		</Event>
+		<Event>
+			<Id>3</Id>
+			<Message LcId="1033">Temperature high</Message>
+			<CauseRemedy Idx="1">
+				<Cause LcId="1033">Temperature above 70 °C</Cause>
+				<Remedy LcId="1033">Check heating and cooling, monitor temperature</Remedy>
+			</CauseRemedy>
+		</Event>
+		<Event>
+			<Id>4</Id>
+			<Message LcId="1033">Pressure high</Message>
+			<CauseRemedy Idx="1">
+				<Cause LcId="1033">Pressure above 3.5 bar</Cause>
+				<Remedy LcId="1033">Check valves and gas supply, monitor pressure</Remedy>
+			</CauseRemedy>
+		</Event>
+	</Source>
+</TcEventSources>
