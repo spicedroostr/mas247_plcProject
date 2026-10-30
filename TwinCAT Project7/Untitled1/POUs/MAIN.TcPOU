@@ -56,20 +56,16 @@ VAR
 
 	
 
-	rTemperature   : REAL;      // Temperatur i °C
-    rPressure      : REAL;      // Trykk i bar
     bAlarmReset    : BOOL;      // Reset-knapp fra HMI
 
-fbTempAlarm    : FB_Alarm;
-fbPressAlarm   : FB_Alarm;
+	fbTempAlarm    : FB_Alarm;
+	fbPressAlarm   : FB_Alarm;
 	
-	rTemprature: REAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// skalerer, regulerer og sender ut signaler
 
-PI_Controller(bEnable := bControllerActive);
 Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
 Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
 Pressure_Differential_Transmitter_1_Scaled := (INT_TO_REAL (Pressure_Differencial_Transmitter_1) /32767)*100;
@@ -78,16 +74,16 @@ PI_Controller(Actual := Level_Transmitter_2_scaled,
 bEnable := bControllerActive);
 Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
 
-// Skaler PT1 (f.eks. 0 til 4 bar)
+// Skaler PT1 (f.eks. 0 til 6 bar)
 Scale_PT1(RawValue := Pressure_Transmitter_1, 
           PhysMin := 0.0, 
           PhysMax := 6.0, 
           ScaledValue => Pressure_1_Bar);
 
-// Skaler TT1 (f.eks. 0 til 100 grader)
+// Skaler TT1 (f.eks. -200 til 850 grader)
 Scale_TT1(RawValue := Temperature_Transmitter, 
-          PhysMin := 0.0, 
-          PhysMax := 100.0, 
+          PhysMin := -200.0, 
+          PhysMax := 850.0, 
           ScaledValue => Temperature_1);
 
 

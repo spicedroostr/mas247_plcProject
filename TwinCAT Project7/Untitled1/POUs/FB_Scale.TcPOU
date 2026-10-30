@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
-  <POU Name="FB_Scale" Id="{35177975-a3ce-4511-97fb-bca3bc45eb06}" SpecialFunc="None">
+  <POU Name="FB_Scale" Id="{da1442ee-1458-4201-b087-62b994f875f2}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Scale
 VAR_INPUT
     RawValue : INT;       
