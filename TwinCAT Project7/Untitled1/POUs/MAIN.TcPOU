@@ -61,7 +61,16 @@ VAR
 	fbTempAlarm    : FB_Alarm;
 	fbPressAlarm   : FB_Alarm;
 	
+
+	// Synlighet for varseltrekant i HMI
+	sTempAlarmVis  : STRING(10) := 'Hidden';
+	sPressAlarmVis : STRING(10) := 'Hidden';
+	
+	
+	
 END_VAR
+
+
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// skalerer, regulerer og sender ut signaler
@@ -163,6 +172,12 @@ END_IF
 
 fbTempAlarm(rValue := Temperature_1, rLimit := 80.0, bReset := bAlarmReset);
 fbPressAlarm(rValue := Pressure_1_Bar, rLimit := 4.0, bReset := bAlarmReset);
+
+// Alarmhåndtering: sender warnings og trips til EventLogger/HMI
+Alarm_System();
+
+IF fbTempAlarm.bAlarm THEN sTempAlarmVis := 'Visible'; ELSE sTempAlarmVis := 'Hidden'; END_IF
+IF fbPressAlarm.bAlarm THEN sPressAlarmVis := 'Visible'; ELSE sPressAlarmVis := 'Hidden'; END_IF
 
 
 

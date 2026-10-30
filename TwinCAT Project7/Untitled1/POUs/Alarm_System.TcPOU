@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="Alarm_System" Id="{eb44db3b-fa71-4e5b-b01f-8a252acc82c2}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Alarm_System
+VAR
+	bAlarmsCreated : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Opprett alarmene én gang ved oppstart
+IF NOT bAlarmsCreated THEN
+    bAlarmsCreated := TRUE;
+    gAL.fbTempWarning.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighTemperatureWarning, FALSE, 0);
+    gAL.fbPressWarning.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighPressureWarning, FALSE, 0);
+    gAL.fbTempTrip.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighTemperature, TRUE, 0);
+    gAL.fbPressTrip.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighPressure, TRUE, 0);
+END_IF
+
+// Warnings: aktive så lenge verdien er over grensen
+IF MAIN.Temperature_1 > 70.0 THEN
+    IF NOT gAL.fbTempWarning.bRaised THEN gAL.fbTempWarning.Raise(0); END_IF
+ELSIF gAL.fbTempWarning.bRaised THEN
+    gAL.fbTempWarning.Clear(0, FALSE);
+END_IF
+
+IF MAIN.Pressure_1_Bar > 3.5 THEN
+    IF NOT gAL.fbPressWarning.bRaised THEN gAL.fbPressWarning.Raise(0); END_IF
+ELSIF gAL.fbPressWarning.bRaised THEN
+    gAL.fbPressWarning.Clear(0, FALSE);
+END_IF
+
+// Trips: følger FB_Alarm i MAIN (låst til Reset)
+IF MAIN.fbTempAlarm.bAlarm THEN
+    IF NOT gAL.fbTempTrip.bRaised THEN gAL.fbTempTrip.Raise(0); END_IF
+ELSIF gAL.fbTempTrip.bRaised THEN
+    gAL.fbTempTrip.Clear(0, FALSE);
+END_IF
+
+IF MAIN.fbPressAlarm.bAlarm THEN
+    IF NOT gAL.fbPressTrip.bRaised THEN gAL.fbPressTrip.Raise(0); END_IF
+ELSIF gAL.fbPressTrip.bRaised THEN
+    gAL.fbPressTrip.Clear(0, FALSE);
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
