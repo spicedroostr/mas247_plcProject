@@ -49,10 +49,18 @@ VAR
 	
 
     Scale_PT1 : FB_Scale;
+	Scale_PT2 : FB_Scale;
+	Scale_PT3 : FB_Scale;
+	Scale_PDT1: FB_Scale;
+	Scale_PDT2: FB_Scale;
     Scale_TT1 : FB_Scale;
+	Scale_LT1 : FB_Scale;
+	Scale_LT2 : FB_Scale;
     
-    Pressure_1_Bar : REAL;
-    Temperature_1  : REAL;
+    Pressure_1_Bar_Scaled : REAL;
+	Pressure_2_Bar_Scaled : REAL;
+	Pressure_3_Bar_Scaled : REAL;
+    Temperature_1_Scaled  : REAL;
 
 	
 
@@ -66,25 +74,53 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// skalerer, regulerer og sender ut signaler
 
-Level_Transmitter_1_Scaled := (INT_TO_REAL (Level_Transmitter_1) /32767)*100;
-Level_Transmitter_2_Scaled := (INT_TO_REAL (Level_Transmitter_2) /32767)*100;
-Pressure_Differential_Transmitter_1_Scaled := (INT_TO_REAL (Pressure_Differencial_Transmitter_1) /32767)*100;
-Pressure_Differential_Transmitter_2_Scaled := (INT_TO_REAL (Pressure_Differencial_Transmitter_2) /32767)*100;
-PI_Controller(Actual := Level_Transmitter_2_scaled,
-bEnable := bControllerActive);
-Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
+Scale_LT1(RawValue := Level_Transmitter_1, 
+          PhysMin := 0.0, 
+          PhysMax := 100.0, 
+          ScaledValue => Level_Transmitter_1_Scaled);
+
+Scale_LT2(RawValue := Level_Transmitter_2, 
+          PhysMin := 0.0, 
+          PhysMax := 100.0, 
+          ScaledValue => Level_Transmitter_2_Scaled);
+		  
+// Oppgitt i prosent, fordi de reelle verdiene ikke er kjent.
+Scale_PDT1(RawValue := Pressure_Differencial_Transmitter_1, 
+          PhysMin := 0.0, 
+          PhysMax := 100.0, 
+          ScaledValue => Pressure_Differential_Transmitter_1_Scaled);
+		  
+Scale_PDT2(RawValue := Pressure_Differencial_Transmitter_2, 
+          PhysMin := 0.0, 
+          PhysMax := 100.0, 
+          ScaledValue => Pressure_Differential_Transmitter_2_Scaled);
 
 // Skaler PT1 (f.eks. 0 til 6 bar)
 Scale_PT1(RawValue := Pressure_Transmitter_1, 
           PhysMin := 0.0, 
           PhysMax := 6.0, 
-          ScaledValue => Pressure_1_Bar);
+          ScaledValue => Pressure_1_Bar_Scaled);
+		  
+Scale_PT2(RawValue := Pressure_Transmitter_2, 
+          PhysMin := 0.0, 
+          PhysMax := 6.0, 
+          ScaledValue => Pressure_2_Bar_Scaled);
+		  
+Scale_PT3(RawValue := Pressure_Transmitter_3, 
+          PhysMin := 0.0, 
+          PhysMax := 6.0, 
+          ScaledValue => Pressure_3_Bar_Scaled);
 
 // Skaler TT1 (f.eks. -200 til 850 grader)
 Scale_TT1(RawValue := Temperature_Transmitter, 
           PhysMin := -200.0, 
           PhysMax := 850.0, 
-          ScaledValue => Temperature_1);
+          ScaledValue => Temperature_1_Scaled);
+		  
+// PI-Controller
+PI_Controller(Actual := Level_Transmitter_2_scaled,
+bEnable := bControllerActive);
+Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
 
 
 // variable interval for Flow_Valve_1_Percentage  form 0 to 100  
@@ -161,8 +197,8 @@ ELSE
 END_IF
 
 
-fbTempAlarm(rValue := Temperature_1, rLimit := 80.0, bReset := bAlarmReset);
-fbPressAlarm(rValue := Pressure_1_Bar, rLimit := 4.0, bReset := bAlarmReset);
+fbTempAlarm(rValue := Temperature_1_Scaled, rLimit := 80.0, bReset := bAlarmReset);
+fbPressAlarm(rValue := Pressure_1_Bar_Scaled, rLimit := 4.0, bReset := bAlarmReset);
 
 
 
