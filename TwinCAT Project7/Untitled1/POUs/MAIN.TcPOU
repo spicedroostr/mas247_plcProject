@@ -47,6 +47,14 @@ VAR
 	//PI controller on/off state
 	bControllerActive : BOOL;
 	
+
+    Scale_PT1 : FB_Scale;
+    Scale_TT1 : FB_Scale;
+    
+    Pressure_1_Bar : REAL;
+    Temperature_1  : REAL;
+
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -60,6 +68,18 @@ Pressure_Differential_Transmitter_2_Scaled := (INT_TO_REAL (Pressure_Differencia
 PI_Controller(Actual := Level_Transmitter_2_scaled,
 bEnable := bControllerActive);
 Level_Valve_2_Percentage := REAL_TO_INT(PI_Controller.Output);
+
+// Skaler PT1 (f.eks. 0 til 4 bar)
+Scale_PT1(RawValue := Pressure_Transmitter_1, 
+          PhysMin := 0.0, 
+          PhysMax := 6.0, 
+          ScaledValue => Pressure_1_Bar);
+
+// Skaler TT1 (f.eks. 0 til 100 grader)
+Scale_TT1(RawValue := Temperature_Transmitter, 
+          PhysMin := 0.0, 
+          PhysMax := 100.0, 
+          ScaledValue => Temperature_1);
 
 
 // variable interval for Flow_Valve_1_Percentage  form 0 to 100  
