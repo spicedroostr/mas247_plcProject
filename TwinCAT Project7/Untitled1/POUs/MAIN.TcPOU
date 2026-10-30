@@ -81,10 +81,10 @@ Scale_PT1(RawValue := Pressure_Transmitter_1,
           PhysMax := 6.0, 
           ScaledValue => Pressure_1_Bar);
 
-// Skaler TT1 (f.eks. 0 til 100 grader)
+// Skaler TT1 (f.eks. -200 til 850 grader)
 Scale_TT1(RawValue := Temperature_Transmitter, 
-          PhysMin := 0.0, 
-          PhysMax := 100.0, 
+          PhysMin := -200.0, 
+          PhysMax := 850.0, 
           ScaledValue => Temperature_1);
 
 
