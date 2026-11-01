@@ -37,6 +37,9 @@
     <Compile Include="POUs\Alarms_and_Emergency\FB_Alarm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_ControlPanel.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_Scale.TcPOU">
       <SubType>Code</SubType>
     </Compile>

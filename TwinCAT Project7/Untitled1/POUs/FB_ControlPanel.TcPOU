@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.21">
+  <POU Name="FB_ControlPanel" Id="{9efcfb52-dadb-41f6-9abe-218aa7d971fa}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ControlPanel
+VAR_INPUT
+	bStartPB    : BOOL;  // physical start, NO (TRUE = pressed)
+	bStopPB     : BOOL;  // physical stop, NC (FALSE = pressed)
+	bEStopPB    : BOOL;  // physical emergency, NC (FALSE = pressed)
+	bHmiStart   : BOOL;  // soft buttons from HMI
+	bHmiStop    : BOOL;
+	bHmiEStop   : BOOL;
+	bReset      : BOOL;  // acknowledge emergency (HMI)
+END_VAR
+VAR_OUTPUT
+	bRunning    : BOOL;  // process is allowed to run
+	bEmergency  : BOOL;  // latched emergency, needs reset
+	bStopActive : BOOL;  // a stop is being requested right now
+END_VAR
+VAR
+	rtStart     : R_TRIG;
+	rtHmiStart  : R_TRIG;
+	bResetByStart : BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Edge detection first, so reset and start can both use it
+rtStart(CLK := bStartPB);
+rtHmiStart(CLK := bHmiStart);
+
+// Stop = physical NC opened OR soft stop
+bStopActive := NOT bStopPB OR bHmiStop;
+
+// Emergency latches. Reset by HMI, or by Start once the E-stop is released
+bResetByStart := FALSE;
+IF NOT bEStopPB OR bHmiEStop THEN
+	bEmergency := TRUE;
+ELSIF bEmergency AND (bReset OR rtStart.Q OR rtHmiStart.Q) THEN
+	bEmergency := FALSE;
+	bResetByStart := rtStart.Q OR rtHmiStart.Q;  // this press only resets
+END_IF
+
+// Start on rising edge, but not on the press that did the reset
+IF bEmergency OR bStopActive THEN
+	bRunning := FALSE;
+ELSIF (rtStart.Q OR rtHmiStart.Q) AND NOT bResetByStart THEN
+	bRunning := TRUE;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -36,7 +36,7 @@
     "DISCOVERY": 1,
     "ENDPOINTS": [
         "http://127.0.0.1:13001",
-        "http://127.0.0.1:3001"
+        "http://127.0.0.1:3002"
     ],
     "ETAGENABLED": true,
     "EXTENSIONS": {
@@ -1089,6 +1089,23 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.bAlarmReset": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bAlarmReset",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Reset-knapp fra HMI"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.bControllerActive": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -1103,6 +1120,36 @@
                         "comment": "PI controller on/off state"
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.bHmiEStop": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bHmiEStop",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.bHmiStart": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bHmiStart",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.bHmiStop": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bHmiStop",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
             },
             "USEMAPPING": true
         },
@@ -4594,7 +4641,11 @@
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_3": 3,
                 "ADS.PLC1.MAIN.Temperature_Transmitter": 3,
+                "ADS.PLC1.MAIN.bAlarmReset": 3,
                 "ADS.PLC1.MAIN.bControllerActive": 3,
+                "ADS.PLC1.MAIN.bHmiEStop": 3,
+                "ADS.PLC1.MAIN.bHmiStart": 3,
+                "ADS.PLC1.MAIN.bHmiStop": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,
