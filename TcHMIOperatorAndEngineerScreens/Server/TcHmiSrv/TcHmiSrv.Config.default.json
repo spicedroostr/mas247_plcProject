@@ -29,7 +29,20 @@
     "DEFAULTLOCALE": "client",
     "DEFAULTTIMEFORMATLOCALE": "client",
     "DEFAULTTIMEZONE": "client",
-    "DEFINITIONS": {},
+    "DEFINITIONS": {
+        "ADS": {
+            "ADS-PLC1.STRING-10": {
+                "allOf": [
+                    {
+                        "maxLength": 10
+                    },
+                    {
+                        "$ref": "tchmi:general#/definitions/String"
+                    }
+                ]
+            }
+        }
+    },
     "DEFLATECOMPRESSIONLEVEL": 5,
     "DIAGNOSTICS_DOMAINS": [],
     "DISABLED_CONFIGURATION_HINTS": [],
@@ -1150,6 +1163,23 @@
             "MAPPING": "PLC1::MAIN::bHmiStop",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.sTripVis": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::sTripVis",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/ADS-PLC1.STRING-10"
+                    },
+                    {
+                        "comment": "Synlighet for varseltrekant i HMI (trip eller nødstopp) - Variabelen er en string siden HMI\r\n Kreven tekst"
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -4646,6 +4676,7 @@
                 "ADS.PLC1.MAIN.bHmiEStop": 3,
                 "ADS.PLC1.MAIN.bHmiStart": 3,
                 "ADS.PLC1.MAIN.bHmiStop": 3,
+                "ADS.PLC1.MAIN.sTripVis": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,

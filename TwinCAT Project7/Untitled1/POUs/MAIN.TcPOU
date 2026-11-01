@@ -70,9 +70,9 @@ VAR
 	fbPressAlarm   : FB_Alarm;   // fbTempAlarm og fbPressAlarm er to faktiske røykvarslere montert i hvert sitt rom.
 	
 
-	// Synlighet for varseltrekant i HMI
-	sTempAlarmVis  : STRING(10) := 'Hidden';
-	sPressAlarmVis : STRING(10) := 'Hidden';
+	// Synlighet for varseltrekant i HMI (trip eller nødstopp) - Variabelen er en string siden HMI
+	// Kreven tekst
+	sTripVis : STRING(10) := 'Hidden';
 	
 	fbEmergency_Shutdown : FB_Emergency_Shutdown;
 	
@@ -233,8 +233,6 @@ fbPressAlarm(rValue := MAX(Pressure_1_Bar_Scaled, MAX(Pressure_2_Bar_Scaled, Pre
 // Alarmhåndtering: sender warnings og trips til EventLogger/HMI
 Alarm_System();
 
-IF fbTempAlarm.bAlarm THEN sTempAlarmVis := 'Visible'; ELSE sTempAlarmVis := 'Hidden'; END_IF
-IF fbPressAlarm.bAlarm THEN sPressAlarmVis := 'Visible'; ELSE sPressAlarmVis := 'Hidden'; END_IF
 	
 
 fbEmergency_Shutdown(
@@ -246,6 +244,12 @@ fbEmergency_Shutdown(
 	Level_Valve_1     := Level_Valve_1,
 	Level_Valve_2     := Level_Valve_2,
 	Level_Valve_3     := Level_Valve_3);
+	
+	IF fbTempAlarm.bAlarm OR fbPressAlarm.bAlarm OR fbControlPanel.bEmergency THEN
+	sTripVis := 'Visible';
+ELSE
+	sTripVis := 'Hidden';
+END_IF
 
 
  
