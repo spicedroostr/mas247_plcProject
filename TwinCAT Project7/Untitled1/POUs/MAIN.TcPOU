@@ -197,16 +197,8 @@ IF Motor_speed_Percentage > 100 THEN
 	
 END_IF
 
-// Safe state: motor off, PI off, flow valve fully open
-IF NOT fbControlPanel.bRunning THEN
-	Motor_ON_OFF            := FALSE;
-	Motor_speed_Percentage  := 0;
-	bControllerActive       := FALSE;
-	Flow_Valve_1_Percentage := 100;
-	Level_Valve_1_Percentage := 100;
-ELSE
-	Motor_ON_OFF            := TRUE;
-END_IF
+// Motor går når prosessen kjører. Nødstopp/trip håndteres i fbEmergency_Shutdown
+Motor_ON_OFF := fbControlPanel.bRunning;
 
 // Flow_Valve_1 calibration
 Flow_Valve_1 := REAL_TO_INT (262.14*Flow_Valve_1_Percentage +6553 ); 
@@ -245,8 +237,15 @@ IF fbTempAlarm.bAlarm THEN sTempAlarmVis := 'Visible'; ELSE sTempAlarmVis := 'Hi
 IF fbPressAlarm.bAlarm THEN sPressAlarmVis := 'Visible'; ELSE sPressAlarmVis := 'Hidden'; END_IF
 	
 
-   // Nødstopp: overstyrer motor og ventiler ved trip
-   fbEmergency_Shutdown();
+fbEmergency_Shutdown(
+	Motor_ON_OFF      := Motor_ON_OFF,
+	bControllerActive := bControllerActive,
+	Motor_speed       := Motor_speed,
+	Gas_Valve         := Gas_Valve,
+	Flow_Valve_1      := Flow_Valve_1,
+	Level_Valve_1     := Level_Valve_1,
+	Level_Valve_2     := Level_Valve_2,
+	Level_Valve_3     := Level_Valve_3);
 
 
  

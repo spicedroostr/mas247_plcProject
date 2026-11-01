@@ -7,6 +7,16 @@ END_VAR
 VAR_OUTPUT
 	bTrip : BOOL;          // TRUE = systemet skal stoppes
 END_VAR
+VAR_IN_OUT
+	Motor_ON_OFF      : BOOL;
+	bControllerActive : BOOL;
+	Motor_speed       : INT;
+	Gas_Valve         : INT;
+	Flow_Valve_1      : INT;
+	Level_Valve_1     : INT;
+	Level_Valve_2     : INT;
+	Level_Valve_3     : INT;
+END_VAR
 
 //MAIN . fbPressAlarm . bAlarm
  //│          │           │
@@ -16,7 +26,9 @@ END_VAR
 
 //Instans: typen er en funksjonsblokk. Den holder en hel pakke, med innganger, utganger og internt minne, og den har kode som kan kjøres.
 
-// Gas_Valve := REAL_TO_INT(262.14 * Prosent + 6553);]]></Declaration>
+// Gas_Valve := REAL_TO_INT(262.14 * Prosent + 6553);
+
+// Setter maskinen i safe state]]></Declaration>
     <Implementation>
       <NWL>
         <XmlArchive>
@@ -129,6 +141,25 @@ END_VAR
                             </o>
                             <v n="Id">10L</v>
                           </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"Main.fbControlPanel.bRunning"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">1</v>
+                                <v n="Fixed">true</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">35L</v>
+                            </o>
+                            <v n="Id">34L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" />
@@ -167,7 +198,7 @@ END_VAR
                   <v n="OutCommented">false</v>
                   <l2 n="NetworkItems" cet="BoxTreeBox">
                     <o>
-                      <v n="BoxType">"MOVE"</v>
+                      <v n="BoxType">"EXECUTE"</v>
                       <o n="Instance" t="Operand">
                         <n n="Operand" />
                         <v n="Type">""</v>
@@ -182,37 +213,21 @@ END_VAR
                         <v n="LValue">false</v>
                         <v n="Boolean">false</v>
                         <v n="IsInstance">true</v>
-                        <v n="Id">26L</v>
+                        <v n="Id">121L</v>
                       </o>
                       <o n="OutputItems" t="OutputItemList">
-                        <l2 n="OutputItems" cet="Operand">
+                        <l2 n="OutputItems">
                           <n />
-                          <o>
-                            <v n="Operand">"Main.Gas_Valve"</v>
-                            <v n="Type">"INT"</v>
-                            <v n="Comment">""</v>
-                            <v n="SymbolComment">""</v>
-                            <v n="Address">""</v>
-                            <o n="Flags" t="Flags">
-                              <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <v n="LValue">true</v>
-                            <v n="Boolean">false</v>
-                            <v n="IsInstance">false</v>
-                            <v n="Id">28L</v>
-                          </o>
                         </l2>
                       </o>
                       <o n="Flags" t="Flags">
                         <v n="Flags">0</v>
-                        <v n="Fixed">false</v>
+                        <v n="Fixed">true</v>
                         <v n="Extensible">false</v>
                       </o>
                       <n n="InputFlags" />
-                      <l2 n="InputItems">
-                        <o t="BoxTreeBox">
+                      <l2 n="InputItems" cet="BoxTreeBox">
+                        <o>
                           <v n="BoxType">"MOVE"</v>
                           <o n="Instance" t="Operand">
                             <n n="Operand" />
@@ -234,7 +249,7 @@ END_VAR
                             <l2 n="OutputItems" cet="Operand">
                               <n />
                               <o>
-                                <v n="Operand">"Main.Motor_ON_OFF"</v>
+                                <v n="Operand">"Motor_ON_OFF"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -323,25 +338,6 @@ END_VAR
                           <v n="ProvidesSTSnippet">false</v>
                           <v n="Id">16L</v>
                         </o>
-                        <o t="BoxTreeOperand">
-                          <o n="Operand" t="Operand">
-                            <v n="Operand">"6553"</v>
-                            <v n="Type">"INT"</v>
-                            <v n="Comment">""</v>
-                            <v n="SymbolComment">""</v>
-                            <v n="Address">""</v>
-                            <o n="Flags" t="Flags">
-                              <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <v n="LValue">false</v>
-                            <v n="Boolean">false</v>
-                            <v n="IsInstance">false</v>
-                            <v n="Id">30L</v>
-                          </o>
-                          <v n="Id">29L</v>
-                        </o>
                       </l2>
                       <o n="InputParam" t="ParamList">
                         <l2 n="Names" cet="String">
@@ -354,20 +350,33 @@ END_VAR
                       <o n="OutputParam" t="ParamList">
                         <l2 n="Names" cet="String">
                           <v>ENO</v>
-                          <v></v>
                         </l2>
                         <l2 n="Types" cet="String">
                           <v>BOOL</v>
-                          <v></v>
                         </l2>
                       </o>
-                      <v n="CallType" t="Operator">Move</v>
+                      <v n="CallType" t="Operator">None</v>
                       <v n="EN">true</v>
                       <v n="ENO">true</v>
-                      <n n="STSnippet" />
+                      <o n="STSnippet" t="STSnippet">
+                        <o n="STSnippet" t="STImplementationObject">
+                          <o n="TextDocument" t="TextDocument">
+                            <v n="TextBlobForSerialisation">"// SAFE STATE
+bControllerActive  := FALSE;  // Slår av PI reg 
+Motor_speed        := 6553;   // 0 %
+Gas_Valve          := 6553;   // stengt
+Flow_Valve_1       := 6553;   // FV1 stengt
+Level_Valve_1      := 32767;  // LV1 100 % åpen
+Level_Valve_2      := 32767;  // LV2 100 % åpen
+Level_Valve_3      := 32767;  // LV3 100 % åpen"</v>
+                            <n n="LineInfoPersistence" />
+                          </o>
+                        </o>
+                        <v n="Id">129L</v>
+                      </o>
                       <v n="ContainsExtensibleInputs">false</v>
-                      <v n="ProvidesSTSnippet">false</v>
-                      <v n="Id">27L</v>
+                      <v n="ProvidesSTSnippet">true</v>
+                      <v n="Id">130L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
@@ -392,7 +401,10 @@ END_VAR
             <Type n="Operator">{bffb3c53-f105-4e85-aba2-e30df579d75f}</Type>
             <Type n="OutputItemList">{f40d3e09-c02c-4522-a88c-dac23558cfc4}</Type>
             <Type n="ParamList">{71496971-9e0c-4677-a832-b9583b571130}</Type>
+            <Type n="STImplementationObject">{3b83b776-fb25-43b8-99f2-3c507c9143fc}</Type>
             <Type n="String">System.String</Type>
+            <Type n="STSnippet">{b2131366-6917-4304-87a9-64c0585560a8}</Type>
+            <Type n="TextDocument">{f3878285-8e4f-490b-bb1b-9acbb7eb04db}</Type>
           </TypeList>
         </XmlArchive>
       </NWL>
