@@ -66,13 +66,15 @@ VAR
 
     bAlarmReset    : BOOL;      // Reset-knapp fra HMI
 
-	fbTempAlarm    : FB_Alarm;
-	fbPressAlarm   : FB_Alarm;
+	fbTempAlarm    : FB_Alarm; // FB_Alarm er røykvarsler-modellen, altså tegningen av hvordan den virker.
+	fbPressAlarm   : FB_Alarm;   // fbTempAlarm og fbPressAlarm er to faktiske røykvarslere montert i hvert sitt rom.
 	
 
 	// Synlighet for varseltrekant i HMI
 	sTempAlarmVis  : STRING(10) := 'Hidden';
 	sPressAlarmVis : STRING(10) := 'Hidden';
+	
+	fbEmergency_Shutdown : FB_Emergency_Shutdown;
 	
 	
 	
@@ -205,7 +207,7 @@ ELSE
 	ON_OFF  := 'MOTOR: OFF' ;
 END_IF
 
-
+// Alt du skriver inne i parentesen med := er innganger. Det er verdier du sender inn i instansen:
 fbTempAlarm(rValue := Temperature_1_Scaled, rLimit := 80.0, bReset := bAlarmReset);
 fbPressAlarm(rValue := MAX(Pressure_1_Bar_Scaled, MAX(Pressure_2_Bar_Scaled, Pressure_3_Bar_Scaled)), rLimit := 4.0, bReset := bAlarmReset);
 
@@ -214,9 +216,10 @@ Alarm_System();
 
 IF fbTempAlarm.bAlarm THEN sTempAlarmVis := 'Visible'; ELSE sTempAlarmVis := 'Hidden'; END_IF
 IF fbPressAlarm.bAlarm THEN sPressAlarmVis := 'Visible'; ELSE sPressAlarmVis := 'Hidden'; END_IF
+	
 
-
-
+   // Nødstopp: overstyrer motor og ventiler ved trip
+   fbEmergency_Shutdown();
 
 
  

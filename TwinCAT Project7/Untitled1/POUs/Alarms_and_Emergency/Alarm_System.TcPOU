@@ -5,7 +5,11 @@
 VAR
 	bAlarmsCreated : BOOL;
 END_VAR
-]]></Declaration>
+
+
+// Alarm_System er alarmsentralen. Den logger og viser alarmen i HMI-en.
+
+// Alarm_System melder fra om alarmen.]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Opprett alarmene én gang ved oppstart
 IF NOT bAlarmsCreated THEN

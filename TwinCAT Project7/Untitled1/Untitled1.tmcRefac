@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="70ab5e32-1960-4844-8ef8-2f5ee2dcfeef">EMERGENCY_SHUTDOWN</Type>
+      <From>Emergency_Shutdown</From>
+      <To>FB_Emergency_Shutdown</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

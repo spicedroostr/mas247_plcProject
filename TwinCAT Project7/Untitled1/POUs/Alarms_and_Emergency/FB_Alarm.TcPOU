@@ -16,7 +16,10 @@ VAR
 				   // Det er nettopp det RS gjør. SET slår den på, den blir stående på, og RESET slår den av.
 				   // fbLatch er ikke en verdi, men en instans av RS-blokken, altså en egen liten “minnebryter” som lever inne i FB_Alarm
 END_VAR
-]]></Declaration>
+
+// FB_Alarm er røykvarsleren. Den merker brannen og fortsetter å pipe til noen kvitterer.
+
+//FB_Alarm bestemmer om det er alarm.]]></Declaration>
     <Implementation>
       <NWL>
         <XmlArchive>
