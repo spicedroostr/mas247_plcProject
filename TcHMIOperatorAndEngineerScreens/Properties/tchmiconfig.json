@@ -68,6 +68,12 @@
       "preloadBindings": false
     },
     {
+      "url": "Eventgrid.view",
+      "preload": false,
+      "keepAlive": false,
+      "preloadBindings": false
+    },
+    {
       "url": "Operator Screen.view",
       "preload": false,
       "keepAlive": false,
