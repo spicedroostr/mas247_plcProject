@@ -12,12 +12,14 @@ END_VAR
 // Alarm_System melder fra om alarmen.]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Opprett alarmene én gang ved oppstart
+// 2. param: FALSE = warning (forsvinner selv), TRUE = trip/nødstopp (må kvitteres)
 IF NOT bAlarmsCreated THEN
     bAlarmsCreated := TRUE;
     gAL.fbTempWarning.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighTemperatureWarning, FALSE, 0);
     gAL.fbPressWarning.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighPressureWarning, FALSE, 0);
     gAL.fbTempTrip.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighTemperature, TRUE, 0);
     gAL.fbPressTrip.CreateEx(TC_EVENTS.ProcessAlarmEvent.HighPressure, TRUE, 0);
+    gAL.fbEstop.CreateEx(TC_EVENTS.ProcessAlarmEvent.EmergencyButtonPressed, TRUE, 0);
 END_IF
 
 // Warnings: aktive så lenge verdien er over grensen
@@ -44,6 +46,13 @@ IF MAIN.fbPressAlarm.bAlarm THEN
     IF NOT gAL.fbPressTrip.bRaised THEN gAL.fbPressTrip.Raise(0); END_IF
 ELSIF gAL.fbPressTrip.bRaised THEN
     gAL.fbPressTrip.Clear(0, FALSE);
+END_IF
+
+// Nødstopp
+IF MAIN.fbControlPanel.bEmergency THEN
+    IF NOT gAL.fbEstop.bRaised THEN gAL.fbEstop.Raise(0); END_IF
+ELSIF gAL.fbEstop.bRaised THEN
+    gAL.fbEstop.Clear(0, FALSE);
 END_IF]]></ST>
     </Implementation>
   </POU>

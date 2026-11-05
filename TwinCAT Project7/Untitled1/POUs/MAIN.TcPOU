@@ -23,7 +23,8 @@ VAR
 	Pressure_Differencial_Transmitter_2 AT %I* : INT;
 	Pressure_Transmitter_1 AT %I* : INT ; 
 	Pressure_Transmitter_2 AT %I* : INT ; 
-	Pressure_Transmitter_3 AT %I* : INT ; 
+	Pressure_Transmitter_3 AT %I* : INT ;
+	bSimulate : BOOL := FALSE;   // TRUE = kjører lokalt uten I/O. SETT FALSE PÅ EKTE PLC!
 
 	
 	//User Input as percentage
@@ -92,8 +93,8 @@ END_VAR
       <ST><![CDATA[// Hovedbrytere
 fbControlPanel(
 	bStartPB  := Start_Button,
-	bStopPB   := Stop_Button,
-	bEStopPB  := EMERGENCY_STOP,
+	bStopPB   := Stop_Button OR bSimulate,
+	bEStopPB  := EMERGENCY_STOP OR bSimulate,
 	bHmiStart := bHmiStart,
 	bHmiStop  := bHmiStop,
 	bHmiEStop := bHmiEStop,
