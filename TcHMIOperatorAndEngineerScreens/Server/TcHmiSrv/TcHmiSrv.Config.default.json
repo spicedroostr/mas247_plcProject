@@ -31,6 +31,16 @@
     "DEFAULTTIMEZONE": "client",
     "DEFINITIONS": {
         "ADS": {
+            "ADS-PLC1.PROPERTY-GET-BOOL": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "function": true
+                    }
+                ]
+            },
             "ADS-PLC1.STRING-10": {
                 "allOf": [
                     {
@@ -1032,6 +1042,36 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Pressure_1_Bar_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_1_Bar_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Pressure_2_Bar_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_2_Bar_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Pressure_3_Bar_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_3_Bar_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -1049,6 +1089,16 @@
             "MAPPING": "PLC1::MAIN::Pressure_Differencial_Transmitter_2",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_1_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_Differential_Transmitter_1_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
             },
             "USEMAPPING": true
         },
@@ -1089,6 +1139,16 @@
             "MAPPING": "PLC1::MAIN::Pressure_Transmitter_3",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Temperature_1_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Temperature_1_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
             },
             "USEMAPPING": true
         },
@@ -1180,6 +1240,46 @@
                         "comment": "Synlighet for varseltrekant i HMI (trip eller nødstopp) - Variabelen er en string siden HMI\r\n Kreven tekst"
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.gAL.fbPressTrip.bRaised": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::gAL::fbPressTrip::bRaised",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.gAL.fbPressWarning.bRaised": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::gAL::fbPressWarning::bRaised",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.gAL.fbTempTrip.bRaised": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::gAL::fbTempTrip::bRaised",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.gAL.fbTempWarning.bRaised": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::gAL::fbTempWarning::bRaised",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL"
             },
             "USEMAPPING": true
         },
@@ -4664,12 +4764,17 @@
                 "ADS.PLC1.MAIN.PI_Controller.Kp": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Setpoint": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Ti": 3,
+                "ADS.PLC1.MAIN.Pressure_1_Bar_Scaled": 3,
+                "ADS.PLC1.MAIN.Pressure_2_Bar_Scaled": 3,
+                "ADS.PLC1.MAIN.Pressure_3_Bar_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_2": 3,
+                "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_1_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_3": 3,
+                "ADS.PLC1.MAIN.Temperature_1_Scaled": 3,
                 "ADS.PLC1.MAIN.Temperature_Transmitter": 3,
                 "ADS.PLC1.MAIN.bAlarmReset": 3,
                 "ADS.PLC1.MAIN.bControllerActive": 3,
@@ -4677,6 +4782,10 @@
                 "ADS.PLC1.MAIN.bHmiStart": 3,
                 "ADS.PLC1.MAIN.bHmiStop": 3,
                 "ADS.PLC1.MAIN.sTripVis": 3,
+                "ADS.PLC1.gAL.fbPressTrip.bRaised": 3,
+                "ADS.PLC1.gAL.fbPressWarning.bRaised": 3,
+                "ADS.PLC1.gAL.fbTempTrip.bRaised": 3,
+                "ADS.PLC1.gAL.fbTempWarning.bRaised": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,

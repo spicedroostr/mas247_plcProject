@@ -14,13 +14,25 @@
             "recordingEnabled": true,
             "rowLimit": 100000
         },
-        "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": {
+        "ADS.PLC1.MAIN.Pressure_1_Bar_Scaled": {
             "interval": "PT1S",
             "maxEntries": 10000,
             "recordingEnabled": true,
             "rowLimit": 100000
         },
-        "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_2": {
+        "ADS.PLC1.MAIN.Pressure_2_Bar_Scaled": {
+            "interval": "PT1S",
+            "maxEntries": 10000,
+            "recordingEnabled": true,
+            "rowLimit": 100000
+        },
+        "ADS.PLC1.MAIN.Pressure_3_Bar_Scaled": {
+            "interval": "PT1S",
+            "maxEntries": 10000,
+            "recordingEnabled": true,
+            "rowLimit": 100000
+        },
+        "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_1_Scaled": {
             "interval": "PT1S",
             "maxEntries": 10000,
             "recordingEnabled": true,
@@ -32,25 +44,7 @@
             "recordingEnabled": true,
             "rowLimit": 100000
         },
-        "ADS.PLC1.MAIN.Pressure_Transmitter_1": {
-            "interval": "PT1S",
-            "maxEntries": 10000,
-            "recordingEnabled": true,
-            "rowLimit": 100000
-        },
-        "ADS.PLC1.MAIN.Pressure_Transmitter_2": {
-            "interval": "PT1S",
-            "maxEntries": 10000,
-            "recordingEnabled": true,
-            "rowLimit": 100000
-        },
-        "ADS.PLC1.MAIN.Pressure_Transmitter_3": {
-            "interval": "PT1S",
-            "maxEntries": 10000,
-            "recordingEnabled": true,
-            "rowLimit": 100000
-        },
-        "ADS.PLC1.MAIN.Temperature_Transmitter": {
+        "ADS.PLC1.MAIN.Temperature_1_Scaled": {
             "interval": "PT1S",
             "maxEntries": 10000,
             "recordingEnabled": true,

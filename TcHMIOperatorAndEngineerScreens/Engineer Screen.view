@@ -659,7 +659,7 @@
 </div>
 <div id="TcHmiTextblock_15" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="340" data-tchmi-left-unit="px" data-tchmi-text="PDT1:" data-tchmi-top="434" data-tchmi-top-unit="px" data-tchmi-width="43" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18" data-tchmi-creator-locked="True">
 </div>
-<div id="TcHmiTextblock_16" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="383" data-tchmi-left-unit="px" data-tchmi-top="434" data-tchmi-top-unit="px" data-tchmi-width="36" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18" data-tchmi-text="%s%ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1%/s%" data-tchmi-creator-locked="True">
+<div id="TcHmiTextblock_16" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="383" data-tchmi-left-unit="px" data-tchmi-top="434" data-tchmi-top-unit="px" data-tchmi-width="36" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18" data-tchmi-text="%s%ADS.PLC1.MAIN.Pressure_Differential_Transmitter_1_Scaled%/s%" data-tchmi-creator-locked="True">
 </div>
 <div id="TcHmiTextblock_17" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="366" data-tchmi-left-unit="px" data-tchmi-text="PT1:" data-tchmi-top="536" data-tchmi-top-unit="px" data-tchmi-width="37" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="18" data-tchmi-creator-locked="True">
 </div>
@@ -927,7 +927,266 @@
 
 <script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
 {
-  "color": "rgba(255, 0, 0, 1)"
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%ADS.PLC1.gAL.fbPressWarning.bRaised%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "symbolExpression": "%s%ADS.PLC1.gAL.fbPressWarning.bRaised%/s%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "value": true
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "rgba(255, 0, 0, 1)"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "None"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%ADS.PLC1.gAL.fbPressTrip.bRaised%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "symbolExpression": "%s%ADS.PLC1.gAL.fbPressTrip.bRaised%/s%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "value": true
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "rgba(249, 0, 0, 1)"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "None"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%ADS.PLC1.gAL.fbTempTrip.bRaised%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "symbolExpression": "%s%ADS.PLC1.gAL.fbTempTrip.bRaised%/s%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "value": true
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "rgba(249, 0, 0, 1)"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "None"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%ADS.PLC1.gAL.fbTempWarning.bRaised%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "parts": [
+          {
+            "if": [
+              {
+                "compare1": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "symbolExpression": "%s%ADS.PLC1.gAL.fbTempWarning.bRaised%/s%"
+                },
+                "compare2": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL",
+                  "value": true
+                },
+                "compareOperator": "==",
+                "logic": null
+              }
+            ],
+            "then": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "rgba(249, 0, 0, 1)"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "else": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%TcHmiPolygon_1::FillColor%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Color",
+                  "value": {
+                    "color": "None"
+                  }
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "None"
 }
 </script>
 </div>
