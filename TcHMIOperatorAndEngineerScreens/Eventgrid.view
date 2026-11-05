@@ -16,18 +16,28 @@
  data-tchmi-creator-locked="True"><div id="TcHmiEventGrid_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEventGrid" data-tchmi-height="410" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-server-interval="1000" data-tchmi-show-menu-bar="True" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="800" data-tchmi-width-unit="px">
 <script data-tchmi-target-attribute="data-tchmi-filter" type="application/json">
 [
+  [
+    {
+      "path": "domain",
+      "comparator": "==",
+      "value": "TcHmiEventLogger"
+    },
+    {
+      "logic": "OR"
+    },
+    {
+      "path": "domain",
+      "comparator": "==",
+      "value": "TcHmiAlarm"
+    }
+  ],
   {
-    "path": "domain",
-    "comparator": "==",
-    "value": "TcHmiEventLogger"
+    "logic": "AND"
   },
   {
-    "logic": "OR"
-  },
-  {
-    "path": "domain",
-    "comparator": "==",
-    "value": "TcHmiAlarm"
+    "path": "severity",
+    "comparator": ">=",
+    "value": 2
   }
 ]
 </script>
@@ -41,6 +51,10 @@
   },
   {
     "columnName": "timeAndDateRaised"
+  },
+  {
+    "columnName": "timeAndDateCleared",
+    "sortable": true
   },
   {
     "columnName": "text",
