@@ -24,7 +24,7 @@ VAR
 	Pressure_Transmitter_1 AT %I* : INT ; 
 	Pressure_Transmitter_2 AT %I* : INT ; 
 	Pressure_Transmitter_3 AT %I* : INT ;
-	bSimulate : BOOL := FALSE;   // TRUE = kjører lokalt uten I/O. SETT FALSE PÅ EKTE PLC!
+	bSimulate : BOOL := TRUE;   // TRUE = kjører lokalt uten I/O. SETT FALSE PÅ EKTE PLC!
 
 	
 	//User Input as percentage
@@ -105,7 +105,8 @@ fbControlPanel(
 Scale_LT1(RawValue := Level_Transmitter_1, 
           PhysMin := 0.0, 
           PhysMax := 100.0, 
-          ScaledValue => Level_Transmitter_1_Scaled);
+          ScaledValue => (Level_Transmitter_1_Scaled));
+		  
 
 Scale_LT2(RawValue := Level_Transmitter_2, 
           PhysMin := 0.0, 

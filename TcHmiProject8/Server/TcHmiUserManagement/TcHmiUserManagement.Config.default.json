@@ -6,10 +6,11 @@
     "PASSWORD_MINIMUM_LENGTH": 1,
     "USERS": {
         "__SystemAdministrator": {
-            "ALGORITHM": 0,
-            "ENABLED": false,
-            "PASSWORD": "",
-            "SALT": "",
+            "ALGORITHM": 1,
+            "ENABLED": true,
+            "LAST_PASSWORD_CHANGE": "2026-11-06T11:48:58.0018423Z",
+            "PASSWORD": "ed06479422eaad891dbdb9b8bd2504d46cf4620e83ee1e697ddb693ea07a79074ade6bde85145b2c4b39c73e14addadb3e579d0e2e20462ad173091feb17637b",
+            "SALT": "5EXH6smTleeijgepv6KtvEGnyH8ipNhKgOebcTIQ9TaMJAdNoZdz3z1eZ3KdS6FqdrBw0fsW3At/4JCU5sKuJw==",
             "TWO_FACTOR_AUTHENTICATION_ENABLED": false
         },
         "__SystemGuest": {
