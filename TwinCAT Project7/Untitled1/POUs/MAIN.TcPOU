@@ -89,7 +89,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbControlPanel(
+      <ST><![CDATA[bReset := bAlarmReset OR (Start_Button AND fbEmergency_Shutdown.bTrip);
+
+fbControlPanel(
 	bStartPB  := Start_Button,
 	bStopPB   := Stop_Button OR bSimulate,
 	bEStopPB  := EMERGENCY_STOP OR bSimulate,
