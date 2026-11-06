@@ -74,7 +74,7 @@ VAR
 
 	// Synlighet for varseltrekant i HMI (trip eller nødstopp) - Variabelen er en string siden HMI
 	// Kreven tekst
-	sTripVis : STRING(10) := 'Hidden';
+	
 	
 	fbEmergency_Shutdown : FB_Emergency_Shutdown;
 	
@@ -245,12 +245,6 @@ ELSE
 	ON_OFF   := 'MOTOR: OFF';
 END_IF
 
-// Trip-melding til HMI
-IF fbEmergency_Shutdown.bTrip THEN
-	sTripVis := 'Visible';
-ELSE
-	sTripVis := 'Hidden';
-END_IF
 
 
  
