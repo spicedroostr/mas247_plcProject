@@ -2,7 +2,7 @@
   "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.7.23/runtimes/native1.12-tchmi/Schema/TchmiConfig.Schema.json",
   "basePath": "./Beckhoff.TwinCAT.HMI.Framework",
   "scaleMode": "None",
-  "startupView": "Engineer Screen v2.view",
+  "startupView": "Engineer Screen.view",
   "loginPage": "",
   "splash": {
     "versionSource": "Framework"

@@ -87,8 +87,6 @@ VAR
 	bHmiEStop      : BOOL;
 	
 END_VAR
-
-
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbControlPanel(

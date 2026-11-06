@@ -1183,6 +1183,24 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.fbEmergency_Shutdown.bTrip": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::fbEmergency_Shutdown::bTrip",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "TRUE = systemet skal stoppes",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.sTripVis": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -4694,6 +4712,7 @@
                 "ADS.PLC1.MAIN.bHmiStart": 3,
                 "ADS.PLC1.MAIN.bHmiStop": 3,
                 "ADS.PLC1.MAIN.bReset": 3,
+                "ADS.PLC1.MAIN.fbEmergency_Shutdown.bTrip": 3,
                 "ADS.PLC1.MAIN.sTripVis": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
