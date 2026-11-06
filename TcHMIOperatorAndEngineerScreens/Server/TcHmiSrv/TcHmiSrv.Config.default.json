@@ -64,6 +64,16 @@
             "REQUIRED": true,
             "STARTUPTYPE": 1
         },
+        "TcHmiEventLogger": {
+            "ENABLED": true,
+            "METADATA": {
+                "migrationVersion": "1.14"
+            },
+            "NAME": "TcHmiEventLogger",
+            "PATH": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.EventLogger.25.0.319\\runtimes\\win-x64\\native\\",
+            "REQUIRED": false,
+            "STARTUPTYPE": 1
+        },
         "TcHmiLua": {
             "ENABLED": true,
             "METADATA": {
@@ -287,6 +297,11 @@
     "SESSIONSTORAGE": {
         "37bd93bd3ada479e5cd00b8a6b33a5a3acf14d182758fb6811c7f6ef2b1f0088": {
             "created": "2026-10-30T11:43:44.7098263Z",
+            "domain": "TcHmiUserManagement",
+            "userName": "Engineer"
+        },
+        "567f548a62c1c086c02e04176037f401f6d19ecfc17ce433bb4fc1f81508be30": {
+            "created": "2026-11-06T16:32:52.0494156Z",
             "domain": "TcHmiUserManagement",
             "userName": "Engineer"
         }
@@ -1032,6 +1047,36 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Pressure_1_Bar_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_1_Bar_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Pressure_2_Bar_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_2_Bar_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Pressure_3_Bar_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_3_Bar_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -1089,6 +1134,16 @@
             "MAPPING": "PLC1::MAIN::Pressure_Transmitter_3",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.MAIN.Temperature_1_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Temperature_1_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
             },
             "USEMAPPING": true
         },
@@ -1201,18 +1256,18 @@
             },
             "USEMAPPING": true
         },
-        "ADS.PLC1.MAIN.sTripVis": {
+        "ADS.PLC1.MAIN.fbEmergency_Shutdown.fbTripLatch.Q1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::MAIN::sTripVis",
+            "MAPPING": "PLC1::MAIN::fbEmergency_Shutdown::fbTripLatch::Q1",
             "SCHEMA": {
                 "allOf": [
                     {
-                        "$ref": "tchmi:server#/definitions/ADS-PLC1.STRING-10"
+                        "$ref": "tchmi:general#/definitions/BOOL"
                     },
                     {
-                        "comment": "Synlighet for varseltrekant i HMI (trip eller nødstopp) - Variabelen er en string siden HMI\r\n Kreven tekst"
+                        "propertyOrder": 3
                     }
                 ]
             },
@@ -3523,6 +3578,125 @@
             },
             "USEMAPPING": true
         },
+        "TcHmiEventLogger.ClearLoggedEvents": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiEventLogger",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "ClearLoggedEvents",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "writeValue": {
+                    "properties": {
+                        "targetName": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "targetName"
+                    ],
+                    "type": "object"
+                }
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiEventLogger.Config": {
+            "ACCESS": 0,
+            "DOMAIN": "TcHmiEventLogger",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "Config",
+            "OPTIONS": {},
+            "SCHEMA": {},
+            "USEMAPPING": true
+        },
+        "TcHmiEventLogger.Diagnostics": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiEventLogger",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "Diagnostics",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "properties": {
+                    "TARGET_SYSTEMS": {
+                        "additionalProperties": {
+                            "properties": {
+                                "activeAlarmsCount": {
+                                    "propertyOrder": 10,
+                                    "type": "integer"
+                                },
+                                "cachedAlarmsCount": {
+                                    "propertyOrder": 8,
+                                    "type": "integer",
+                                    "visibility": "HideInEngineering"
+                                },
+                                "cachedInvalidAlarmsCount": {
+                                    "propertyOrder": 9,
+                                    "type": "integer",
+                                    "visibility": "HideInEngineering"
+                                },
+                                "cachedMessagesCount": {
+                                    "propertyOrder": 7,
+                                    "type": "integer",
+                                    "visibility": "HideInEngineering"
+                                },
+                                "connectError": {
+                                    "propertyOrder": 2,
+                                    "type": "string"
+                                },
+                                "connectionState": {
+                                    "propertyOrder": 1,
+                                    "type": "string"
+                                },
+                                "importedAlarmsCount": {
+                                    "propertyOrder": 5,
+                                    "type": "integer"
+                                },
+                                "importedEventsCount": {
+                                    "propertyOrder": 3,
+                                    "type": "integer"
+                                },
+                                "importedInvalidAlarmsCount": {
+                                    "propertyOrder": 6,
+                                    "type": "integer"
+                                },
+                                "importedMessagesCount": {
+                                    "propertyOrder": 4,
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "connectionState"
+                            ],
+                            "type": "object"
+                        },
+                        "configDescription": "DESC_TARGET_SYSTEM",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "USEMAPPING": true
+        },
+        "TcHmiEventLogger.ListEnabledTargetSystems": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiEventLogger",
+            "DYNAMIC": false,
+            "HIDDEN": true,
+            "MAPPING": "ListEnabledTargetSystems",
+            "OPTIONS": {},
+            "SCHEMA": {
+                "function": true,
+                "items": {
+                    "type": "string"
+                },
+                "type": "array"
+            },
+            "USEMAPPING": true
+        },
         "TcHmiLua.Config": {
             "ACCESS": 0,
             "DOMAIN": "TcHmiLua",
@@ -4699,12 +4873,16 @@
                 "ADS.PLC1.MAIN.PI_Controller.Kp": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Setpoint": 3,
                 "ADS.PLC1.MAIN.PI_Controller.Ti": 3,
+                "ADS.PLC1.MAIN.Pressure_1_Bar_Scaled": 3,
+                "ADS.PLC1.MAIN.Pressure_2_Bar_Scaled": 3,
+                "ADS.PLC1.MAIN.Pressure_3_Bar_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_3": 3,
+                "ADS.PLC1.MAIN.Temperature_1_Scaled": 3,
                 "ADS.PLC1.MAIN.Temperature_Transmitter": 3,
                 "ADS.PLC1.MAIN.bAlarmReset": 3,
                 "ADS.PLC1.MAIN.bControllerActive": 3,
@@ -4713,7 +4891,7 @@
                 "ADS.PLC1.MAIN.bHmiStop": 3,
                 "ADS.PLC1.MAIN.bReset": 3,
                 "ADS.PLC1.MAIN.fbEmergency_Shutdown.bTrip": 3,
-                "ADS.PLC1.MAIN.sTripVis": 3,
+                "ADS.PLC1.MAIN.fbEmergency_Shutdown.fbTripLatch.Q1": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,
@@ -4739,6 +4917,8 @@
                 "Logout": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
+                "TcHmiEventLogger.Diagnostics": 3,
+                "TcHmiEventLogger.ListEnabledTargetSystems": 3,
                 "TcHmiSqliteHistorize.Diagnostics": 3,
                 "TcHmiSqliteHistorize.GetTrendLineData": 3,
                 "TcHmiSqliteHistorize.GetTrendLineWindow": 3,

@@ -872,5 +872,30 @@
   }
 ]
 </script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Engineers",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "Operators",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Engineers",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "Operators",
+    "permission": "Allow"
+  }
+]
+</script>
 </div>
 </div>

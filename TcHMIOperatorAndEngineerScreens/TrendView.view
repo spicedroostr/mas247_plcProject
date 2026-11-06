@@ -466,6 +466,31 @@
   }
 ]
 </script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Engineers",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "Operators",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Engineers",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "Operators",
+    "permission": "Allow"
+  }
+]
+</script>
 </div>
 <div id="TcHmiButton_26" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="702" data-tchmi-left-unit="px" data-tchmi-text="Eventgrid" data-tchmi-top="76" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-creator-locked="True">
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
