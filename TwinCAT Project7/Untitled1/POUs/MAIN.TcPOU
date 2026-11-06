@@ -25,6 +25,7 @@ VAR
 	Pressure_Transmitter_2 AT %I* : INT ; 
 	Pressure_Transmitter_3 AT %I* : INT ;
 	bSimulate : BOOL := FALSE;   // TRUE = kjører lokalt uten I/O. SETT FALSE PÅ EKTE PLC!
+	bReset : BOOL;   // Felles reset fra HMI: alarmer, safe state og motor - olavr
 
 	
 	//User Input as percentage
@@ -90,15 +91,14 @@ END_VAR
 
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Hovedbrytere
-fbControlPanel(
+      <ST><![CDATA[fbControlPanel(
 	bStartPB  := Start_Button,
 	bStopPB   := Stop_Button OR bSimulate,
 	bEStopPB  := EMERGENCY_STOP OR bSimulate,
 	bHmiStart := bHmiStart,
-	bHmiStop  := bHmiStop,
+	bHmiStop  := bHmiStop OR fbEmergency_Shutdown.bTrip,
 	bHmiEStop := bHmiEStop,
-	bReset    := bAlarmReset);
+	bReset    := bReset);
 
 // skalerer, regulerer og sender ut signaler
 
@@ -217,25 +217,15 @@ Level_Valve_3 := REAL_TO_INT(262.14*Level_Valve_3_Percentage +6553);
 // Motor_speed calibration
 Motor_speed := REAL_TO_INT(262.14*Motor_speed_Percentage +6553);
 
- 
-IF Motor_ON_OFF   THEN
-    Motor_ON   :=  FALSE;
-	ON_OFF  := 'MOTOR: ON' ;
-	
-ELSE
-    Motor_ON  := TRUE;
-	ON_OFF  := 'MOTOR: OFF' ;
-END_IF
 
-// Alt du skriver inne i parentesen med := er innganger. Det er verdier du sender inn i instansen:
-fbTempAlarm(rValue := Temperature_1_Scaled, rLimit := 80.0, bReset := bAlarmReset);
-fbPressAlarm(rValue := MAX(Pressure_1_Bar_Scaled, MAX(Pressure_2_Bar_Scaled, Pressure_3_Bar_Scaled)), rLimit := 4.0, bReset := bAlarmReset);
+fbTempAlarm(rValue := Temperature_1_Scaled, rLimit := 80.0, bReset := bReset);
+fbPressAlarm(rValue := MAX(Pressure_1_Bar_Scaled, MAX(Pressure_2_Bar_Scaled, Pressure_3_Bar_Scaled)), rLimit := 4.0, bReset := bReset);
 
 // Alarmhåndtering: sender warnings og trips til EventLogger/HMI
 Alarm_System();
 
 	
-
+// Safe state
 fbEmergency_Shutdown(
 	Motor_ON_OFF      := Motor_ON_OFF,
 	bControllerActive := bControllerActive,
@@ -245,8 +235,18 @@ fbEmergency_Shutdown(
 	Level_Valve_1     := Level_Valve_1,
 	Level_Valve_2     := Level_Valve_2,
 	Level_Valve_3     := Level_Valve_3);
-	
-	IF fbTempAlarm.bAlarm OR fbPressAlarm.bAlarm OR fbControlPanel.bEmergency THEN
+
+// Motorstatus til HMI (etter safe state, så den viser riktig)
+IF Motor_ON_OFF THEN
+	Motor_ON := FALSE;
+	ON_OFF   := 'MOTOR: ON';
+ELSE
+	Motor_ON := TRUE;
+	ON_OFF   := 'MOTOR: OFF';
+END_IF
+
+// Trip-melding til HMI
+IF fbEmergency_Shutdown.bTrip THEN
 	sTripVis := 'Visible';
 ELSE
 	sTripVis := 'Hidden';
