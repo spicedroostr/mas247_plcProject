@@ -9,7 +9,7 @@ VAR_INPUT
 	bHmiStart   : BOOL;  // soft buttons from HMI
 	bHmiStop    : BOOL;
 	bHmiEStop   : BOOL;
-	bReset      : BOOL;  // acknowledge emergency (HMI)
+	bReset      : BOOL;  // felles reset (HMI)
 END_VAR
 VAR_OUTPUT
 	bRunning    : BOOL;  // process is allowed to run
@@ -19,29 +19,26 @@ END_VAR
 VAR
 	rtStart     : R_TRIG;
 	rtHmiStart  : R_TRIG;
-	bResetByStart : BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Edge detection first, so reset and start can both use it
+      <ST><![CDATA[// Flankedeteksjon på start
 rtStart(CLK := bStartPB);
 rtHmiStart(CLK := bHmiStart);
 
-// Stop = physical NC opened OR soft stop
+// Stopp = fysisk NC åpnet ELLER soft stop (inkl. trip fra MAIN)
 bStopActive := NOT bStopPB OR bHmiStop;
 
-// Emergency latches. Reset by HMI, or by Start once the E-stop is released
-bResetByStart := FALSE;
+// Nødstopp låses. Kvitteres kun med bReset når nødstoppen er sluppet
 IF NOT bEStopPB OR bHmiEStop THEN
 	bEmergency := TRUE;
-ELSIF bEmergency AND (bReset OR rtStart.Q OR rtHmiStart.Q) THEN
+ELSIF bEmergency AND bReset THEN
 	bEmergency := FALSE;
-	bResetByStart := rtStart.Q OR rtHmiStart.Q;  // this press only resets
 END_IF
 
-// Start on rising edge, but not on the press that did the reset
+// Start på stigende flanke, kun når ingen stopp eller nødstopp er aktiv
 IF bEmergency OR bStopActive THEN
 	bRunning := FALSE;
-ELSIF (rtStart.Q OR rtHmiStart.Q) AND NOT bResetByStart THEN
+ELSIF rtStart.Q OR rtHmiStart.Q THEN
 	bRunning := TRUE;
 END_IF]]></ST>
     </Implementation>
