@@ -377,3 +377,4 @@ LineIDs.dbg
 debug.log
 UpgradeLog.htm
 *.~u
+/TwinCAT Project7/TwinCAT Project7.tsproj
