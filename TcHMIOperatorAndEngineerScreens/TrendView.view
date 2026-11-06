@@ -13,7 +13,7 @@
   data-tchmi-background-image-width="100"
   data-tchmi-background-image-height-unit="%"
   data-tchmi-background-image-width-unit="%"
- data-tchmi-creator-viewport-width="1152" data-tchmi-creator-viewport-height="1200"><div id="TcHmiTrendLineChart_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT2M">
+ data-tchmi-creator-viewport-width="1152" data-tchmi-creator-viewport-height="1200"><div id="TcHmiTrendLineChart_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -86,7 +86,7 @@
 ]
 </script>
 
-<div id="TcHmiTrendLineChart_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="455" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="455" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -131,7 +131,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTrendLineChart_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="735" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="735" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -176,7 +176,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTrendLineChart_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="32" data-tchmi-left-unit="px" data-tchmi-top="1003" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="32" data-tchmi-left-unit="px" data-tchmi-top="1003" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -221,7 +221,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTrendLineChart_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="7" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="7" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -266,7 +266,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTrendLineChart_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="455" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="7" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="455" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="7" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -311,7 +311,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTrendLineChart_8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="735" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="7" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="735" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="7" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {
@@ -356,7 +356,7 @@
 ]
 </script>
 </div>
-<div id="TcHmiTrendLineChart_9" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="1002" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT2M">
+<div id="TcHmiTrendLineChart_9" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTrendLineChart" data-tchmi-height="214" data-tchmi-height-unit="px" data-tchmi-left="553" data-tchmi-left-unit="px" data-tchmi-top="1002" data-tchmi-top-unit="px" data-tchmi-width="479" data-tchmi-width-unit="px" data-tchmi-x-axis-name="Time" data-tchmi-x-sub-tick-steps="4" data-tchmi-y-sub-tick-steps="4" data-tchmi-show-legend="False" data-tchmi-server-domain="TcHmiSqliteHistorize" data-tchmi-show-menu-bar="True" data-tchmi-y-main-tick-steps="6" data-tchmi-start="PT3M">
 <script data-tchmi-target-attribute="data-tchmi-y-axis" type="application/json">
 [
   {

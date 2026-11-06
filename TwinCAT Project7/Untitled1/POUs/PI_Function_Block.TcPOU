@@ -3,7 +3,7 @@
   <POU Name="PI_Function_Block" Id="{efb42321-a56f-439b-a67e-f0f245e3bee1}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PI_Function_Block
 VAR_INPUT
-    Setpoint :REAL := 45;
+    Setpoint :REAL := 54;
     Actual: REAL;
 	Bias: REAL := 40;
     Kp :REAL := 20;
