@@ -119,8 +119,8 @@ Scale_PDT1(RawValue := Pressure_Differencial_Transmitter_1,
           ScaledValue => Pressure_Differential_Transmitter_1_Scaled);
 		  
 Scale_PDT2(RawValue := Pressure_Differencial_Transmitter_2, 
-          PhysMin := 0.0, 
-          PhysMax := 100.0, 
+          PhysMin := 0, 
+          PhysMax := 100, 
           ScaledValue => Pressure_Differential_Transmitter_2_Scaled);
 
 // Skaler PT1 (f.eks. 0 til 6 bar)
