@@ -934,7 +934,7 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%f%%/f%",
+    "event": "%s%ADS.PLC1.MAIN.fbEmergency_Shutdown.bTrip%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -951,7 +951,7 @@
                 "compare2": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/BOOL",
-                  "value": false
+                  "value": true
                 },
                 "compareOperator": "==",
                 "logic": null

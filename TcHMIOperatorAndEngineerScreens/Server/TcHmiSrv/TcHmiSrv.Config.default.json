@@ -31,6 +31,16 @@
     "DEFAULTTIMEZONE": "client",
     "DEFINITIONS": {
         "ADS": {
+            "ADS-PLC1.PROPERTY-GET-BOOL": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "function": true
+                    }
+                ]
+            },
             "ADS-PLC1.STRING-10": {
                 "allOf": [
                     {
@@ -1270,6 +1280,16 @@
                         "propertyOrder": 3
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.gAL.fbEstop.bRaised": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::gAL::fbEstop::bRaised",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL"
             },
             "USEMAPPING": true
         },
@@ -4892,6 +4912,7 @@
                 "ADS.PLC1.MAIN.bReset": 3,
                 "ADS.PLC1.MAIN.fbEmergency_Shutdown.bTrip": 3,
                 "ADS.PLC1.MAIN.fbEmergency_Shutdown.fbTripLatch.Q1": 3,
+                "ADS.PLC1.gAL.fbEstop.bRaised": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,

@@ -62,12 +62,6 @@
   "content": [],
   "views": [
     {
-      "url": "Engineer Screen v2.view",
-      "preload": false,
-      "keepAlive": false,
-      "preloadBindings": false
-    },
-    {
       "url": "Engineer Screen.view",
       "preload": false,
       "keepAlive": false,
