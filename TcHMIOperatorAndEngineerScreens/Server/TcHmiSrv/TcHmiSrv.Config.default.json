@@ -314,6 +314,11 @@
             "created": "2026-11-06T16:32:52.0494156Z",
             "domain": "TcHmiUserManagement",
             "userName": "Engineer"
+        },
+        "adf73d839d513a599a82bb00d7b8fbf8485a9d8cfdb3b117dca77fd849810f6d": {
+            "created": "2026-11-11T08:33:38.7607217Z",
+            "domain": "TcHmiUserManagement",
+            "userName": "Engineer"
         }
     },
     "SHOW_CONFIGURATION_HINTS": true,

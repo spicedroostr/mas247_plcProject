@@ -678,7 +678,7 @@
                 "compare1": {
                   "objectType": "Symbol",
                   "valueType": "tchmi:framework#/definitions/ToggleState",
-                  "symbolExpression": "%ctrl%TcHmiToggleButton_1::ToggleState%/ctrl%"
+                  "symbolExpression": "%ctrl%TcHmiToggleButton_2::ToggleState%/ctrl%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
@@ -693,7 +693,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%TcHmiToggleButton_1::Text%/ctrl%",
+                "symbolExpression": "%ctrl%TcHmiToggleButton_2::Text%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
@@ -704,7 +704,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%TcHmiToggleButton_1::BackgroundColor%/ctrl%",
+                "symbolExpression": "%ctrl%TcHmiToggleButton_2::BackgroundColor%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -721,7 +721,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%TcHmiToggleButton_1::Text%/ctrl%",
+                "symbolExpression": "%ctrl%TcHmiToggleButton_2::Text%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
@@ -732,7 +732,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%TcHmiToggleButton_1::BackgroundColor%/ctrl%",
+                "symbolExpression": "%ctrl%TcHmiToggleButton_2::BackgroundColor%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",

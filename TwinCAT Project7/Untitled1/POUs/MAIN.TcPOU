@@ -103,13 +103,13 @@ fbControlPanel(
 // skalerer, regulerer og sender ut signaler
 
 Scale_LT1(RawValue := Level_Transmitter_1, 
-          PhysMin := 0.0, 
-          PhysMax := 100.0, 
+          PhysMin := 20.0, 
+          PhysMax := 20.5, 
           ScaledValue => Level_Transmitter_1_Scaled);
 
 Scale_LT2(RawValue := Level_Transmitter_2, 
-          PhysMin := 0.0, 
-          PhysMax := 100.0, 
+          PhysMin := 50.0, 
+          PhysMax := 50.5, 
           ScaledValue => Level_Transmitter_2_Scaled);
 		  
 // Oppgitt i prosent, fordi de reelle verdiene ikke er kjent.
@@ -119,8 +119,8 @@ Scale_PDT1(RawValue := Pressure_Differencial_Transmitter_1,
           ScaledValue => Pressure_Differential_Transmitter_1_Scaled);
 		  
 Scale_PDT2(RawValue := Pressure_Differencial_Transmitter_2, 
-          PhysMin := 0, 
-          PhysMax := 100, 
+          PhysMin := 45.0, 
+          PhysMax := 45.5, 
           ScaledValue => Pressure_Differential_Transmitter_2_Scaled);
 
 // Skaler PT1 (f.eks. 0 til 6 bar)
