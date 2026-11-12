@@ -31,6 +31,16 @@
     "DEFAULTTIMEZONE": "client",
     "DEFINITIONS": {
         "ADS": {
+            "ADS-PLC1.PROPERTY-GET-BOOL": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "function": true
+                    }
+                ]
+            },
             "ADS-PLC1.STRING-10": {
                 "allOf": [
                     {
@@ -302,6 +312,11 @@
         },
         "567f548a62c1c086c02e04176037f401f6d19ecfc17ce433bb4fc1f81508be30": {
             "created": "2026-11-06T16:32:52.0494156Z",
+            "domain": "TcHmiUserManagement",
+            "userName": "Engineer"
+        },
+        "adf73d839d513a599a82bb00d7b8fbf8485a9d8cfdb3b117dca77fd849810f6d": {
+            "created": "2026-11-11T08:33:38.7607217Z",
             "domain": "TcHmiUserManagement",
             "userName": "Engineer"
         }
@@ -1097,6 +1112,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_1_Scaled": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::Pressure_Differential_Transmitter_1_Scaled",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -1270,6 +1295,16 @@
                         "propertyOrder": 3
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.gAL.fbEstop.bRaised": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::gAL::fbEstop::bRaised",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.PROPERTY-GET-BOOL"
             },
             "USEMAPPING": true
         },
@@ -4878,6 +4913,7 @@
                 "ADS.PLC1.MAIN.Pressure_3_Bar_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Differencial_Transmitter_2": 3,
+                "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_1_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Differential_Transmitter_2_Scaled": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_1": 3,
                 "ADS.PLC1.MAIN.Pressure_Transmitter_2": 3,
@@ -4892,6 +4928,7 @@
                 "ADS.PLC1.MAIN.bReset": 3,
                 "ADS.PLC1.MAIN.fbEmergency_Shutdown.bTrip": 3,
                 "ADS.PLC1.MAIN.fbEmergency_Shutdown.fbTripLatch.Q1": 3,
+                "ADS.PLC1.gAL.fbEstop.bRaised": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,
                 "CreateEvent": 3,

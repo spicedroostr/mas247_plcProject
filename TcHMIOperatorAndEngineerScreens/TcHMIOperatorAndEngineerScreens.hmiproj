@@ -131,9 +131,6 @@
     <Content Include="Eventgrid.view">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Engineer Screen v2.view">
-      <SubType>Content</SubType>
-    </Content>
     <Folder Include="Fonts\" />
     <Folder Include="Images" />
     <Folder Include="Images\Manifest" />
